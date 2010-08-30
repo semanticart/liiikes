@@ -1,0 +1,42 @@
+drafter:
+  id: 1
+  name: Robocop
+  url: 'http://robocop.com'
+  avatar_url: ''
+  location: ''
+  twitter_screen_name: 'robocop'
+  drafted_by_player_id:
+  shots_count: 12
+  draftees_count: 1
+  followers_count: 1
+  following_count: 1
+  d_created_at: <%= 1.day.ago %>
+
+draftee:
+  id: 2
+  name: Elvis
+  url: 'http://elvis.com'
+  avatar_url: ''
+  location: ''
+  twitter_screen_name: 'elvis'
+  drafted_by_player_id: 1
+  shots_count: 3
+  draftees_count: 0
+  followers_count: 1
+  following_count: 1
+  d_created_at: <%= 1.hour.ago %>
+
+additional_draftee:
+  id: 3
+  name: Sasquatch
+  url: 'http://sasquatches.com'
+  avatar_url: ''
+  location: ''
+  twitter_screen_name: 'bigfoot'
+  drafted_by_player_id: 1
+  shots_count: 2
+  draftees_count: 0
+  followers_count: 0
+  following_count: 0
+  d_created_at: <%= 1.minute.ago %>
+
