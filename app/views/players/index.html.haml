@@ -1,6 +1,6 @@
 #wrapper
   %h1
-    %a{:href => "#"} Scouuuts
+    %a{:href => "/"} Scouuuts
   %p.tagline
     Who is drafting the best talent into
     = succeed "?" do
@@ -12,7 +12,9 @@
         %th.player{:rowspan => "2"} Player
         %th{:rowspan => "2"} Draftees
         %th.draftee-stats{:colspan => "3"} Draftee Stats
-        %th{:rowspan => "2"} Raw Score
+        %th{:rowspan => "2"}
+          = link_to "LAA", :controller => "about"
+          Score
       %tr
         %th.draftee-stat Followers
         %th.draftee-stat Views
@@ -222,12 +224,3 @@
         %td 14,116
         %td 1,822
         %td 18,757
-#footer
-  %p
-    Scouuuts
-    %span{:style => "text-decoration: line-through;"} was built by
-    is being built by
-    %a{:href => "http://darowski.com"} Adam Darowski
-    and
-    = succeed "." do
-      %a{:href => "http://semanticart.com"} Jeffrey Chupp
