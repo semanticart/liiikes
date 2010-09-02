@@ -1,4 +1,163 @@
 body
-  font:
-    family: "Trebuchet MS"
-  background: yellow
+  margin: 0 auto
+  background-color: #EEE
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif
+  font-size: 16px
+
+a
+  outline: 0
+  &:link, &:visited, &:active
+    color: #EA4C88
+    text-decoration: none
+  &:hover
+    text-decoration: underline
+
+img
+  border-width: 0
+
+#wrapper
+  border-top: 6px solid #EA4C88
+  width: 80%
+  padding: 20px
+  background-color: #FFF
+  margin: 20px auto
+  -moz-box-shadow: #AAA 0px 0px 20px
+  -webkit-box-shadow: #AAA 0px 0px 20px
+  box-shadow: #AAA 0px 0px 20px
+
+h1
+  text-align: center
+  font-size: 100px
+  margin: 20px 0
+  text-shadow: #999 0px 0px 8px
+
+p.tagline
+  text-align: center
+  color: #999
+  a
+    color: #666
+
+table
+  width: 100%
+  border-collapse: collapse
+  margin: 40px 0
+  border-bottom: 1px solid #CCC
+  tbody tr:hover
+    background-color: #FFFFEB
+
+tbody tr:nth-child(2n)
+  background-color: #F5F5F5
+
+thead th
+  vertical-align: bottom
+  &.player
+    text-align: left
+
+tbody td
+  &.user
+    text-align: left
+  text-align: center
+  position: relative
+  a
+    font-weight: bold
+  dl
+    margin: 0
+    padding: 0 0 0 55px
+    position: relative
+    min-height: 50px
+    list-style: none
+    dt
+      padding-top: 5px
+      font-weight: bold
+  dd
+    margin: 0
+    font-weight: normal
+
+dd
+  &.avatar
+    position: absolute
+    top: 0
+    left: 0
+    img
+      height: 40px
+      width: 40px
+      border: 1px solid #DDD
+      -moz-border-radius: 4px
+      -webkit-border-radius: 4px
+      border-radius: 4px
+      padding: 4px
+      background-color: #FFF
+  &.twitter
+    font-size: 11px
+    a
+      color: #666
+      font-weight: normal
+
+tbody th, td
+  padding: 4px
+  border-top: 1px solid #CCC
+  vertical-align: middle
+
+th
+  &.draftee-stats
+    font-size: 11px
+    border-bottom: 1px solid #CCC
+    color: #999
+    text-transform: uppercase
+    letter-spacing: 6px
+  &.draftee-stat
+    font-size: 11px
+    background-color: #EEE
+
+#footer
+  margin: 20px auto 100px
+  p
+    text-align: center
+    font-size: 11px
+
+.top-draftees
+  position: absolute
+  background-color: rgba(0, 0, 0, 0.85)
+  padding: 20px
+  z-index: 1
+  text-align: left
+  color: #FFF
+  -moz-border-radius: 8px
+  -webkit-border-radius: 8px
+  border-radius: 8px
+  top: -32px
+  left: 92%
+  width: 220px
+  dl
+    margin: 0
+    padding: 0
+  dt
+    font-size: 14px
+    padding: 0
+    span
+      font-weight: normal
+  dd
+    padding: 0
+    margin: 0
+  ol
+    list-style: none
+    font-size: 12px
+    margin: 0
+    padding: 0
+  li
+    margin-top: 5px
+    a
+      font-size: 14px
+  ol img
+    height: 14px
+    width: 14px
+    vertical-align: baseline
+
+div.arrow
+  position: absolute
+  top: 20px
+  left: -40px
+  border-top: 20px solid transparent
+  border-bottom: 20px solid transparent
+  border-right: 20px solid rgba(0, 0, 0, 0.85)
+  border-left: 20px solid transparent

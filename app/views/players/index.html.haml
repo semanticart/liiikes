@@ -1,2 +1,233 @@
-%h1 Players
-%p Font font font background font
+#wrapper
+  %h1
+    %a{:href => "#"} Scouuuts
+  %p.tagline
+    Who is drafting the best talent into
+    = succeed "?" do
+      %a{:href => "http://dribbble.com"} Dribbble
+  %table
+    %thead
+      %tr
+        %th{:rowspan => "2"} Rank
+        %th.player{:rowspan => "2"} Player
+        %th{:rowspan => "2"} Draftees
+        %th.draftee-stats{:colspan => "3"} Draftee Stats
+        %th{:rowspan => "2"} Raw Score
+      %tr
+        %th.draftee-stat Followers
+        %th.draftee-stat Views
+        %th.draftee-stat Likes
+    %tbody
+      %tr
+        %td 1
+        %td.user
+          %dl
+            %dt
+              %a{:href => "http://dribbble.com/players/simplebits"} Dan Cederholm
+            %dd.twitter
+              %a{:href => "http://twitter.com/simplebits"} @simplebits
+            %dd.avatar
+              %a{:href => "http://dribbble.com/players/simplebits"}
+                %img{:alt => "Dan Cederholm avatar", :src => "http://dribbble.com/system/users/1/avatars/thumb/dancederholm-peek.jpg"}/
+        %td
+          %div{:style => "position: relative;"}
+            %a{:href => "http://dribbble.com/players/simplebits/draftees"} 104
+            .top-draftees
+              .arrow
+              %dl
+                %dt
+                  Dan Cederholm&rsquo;s
+                  %span Top Draftees
+                %dd
+                  %ol
+                    %li
+                      %a{:href => "http://dribbble.com/players/adarowski"}
+                        %img.draftee-avatar{:alt => "Adam Darowski avatar", :src => "http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg?1249513132"}/
+                        Adam Darowski
+                      (2,143)
+                    %li
+                      %a{:href => "http://dribbble.com/players/adarowski"}
+                        %img.draftee-avatar{:alt => "Adam Darowski avatar", :src => "http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg?1249513132"}/
+                        Adam Darowski
+                      (2,143)
+                    %li
+                      %a{:href => "http://dribbble.com/players/adarowski"}
+                        %img.draftee-avatar{:alt => "Adam Darowski avatar", :src => "http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg?1249513132"}/
+                        Adam Darowski
+                      (2,143)
+                    %li
+                      %a{:href => "http://dribbble.com/players/adarowski"}
+                        %img.draftee-avatar{:alt => "Adam Darowski avatar", :src => "http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg?1249513132"}/
+                        Adam Darowski
+                      (2,143)
+                    %li
+                      %a{:href => "http://dribbble.com/players/adarowski"}
+                        %img.draftee-avatar{:alt => "Adam Darowski avatar", :src => "http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg?1249513132"}/
+                        Adam Darowski
+                      (2,143)
+        %td 10,218
+        %td 118,412
+        %td 4,612
+        %td 113,242
+      %tr
+        %td 2
+        %td.user
+          %dl
+            %dt
+              %a{:href => "http://dribbble.com/players/frogandcode"} Rich Thornett
+            %dd.twitter
+              %a{:href => "http://twitter.com/frogandcode"} @frogandcode
+            %dd.avatar
+              %a{:href => "http://dribbble.com/players/frogandcode"}
+                %img{:alt => "Rich Thornett avatar", :src => "http://dribbble.com/system/users/2/avatars/thumb/headshot.jpg"}/
+        %td
+          %a{:href => "http://dribbble.com/players/frogandcode/draftees"} 36
+        %td 2,819
+        %td 14,116
+        %td 1,822
+        %td 18,757
+      %tr
+        %td 3
+        %td.user
+          %dl
+            %dt
+              %a{:href => "http://dribbble.com/players/simplebits"} Dan Cederholm
+            %dd.twitter
+              %a{:href => "http://twitter.com/simplebits"} @simplebits
+            %dd.avatar
+              %a{:href => "http://dribbble.com/players/simplebits"}
+                %img{:alt => "Dan Cederholm avatar", :src => "http://dribbble.com/system/users/1/avatars/thumb/dancederholm-peek.jpg"}/
+        %td
+          %a{:href => "http://dribbble.com/players/simplebits/draftees"} 104
+        %td 10,218
+        %td 118,412
+        %td 4,612
+        %td 113,242
+      %tr
+        %td 4
+        %td.user
+          %dl
+            %dt
+              %a{:href => "http://dribbble.com/players/frogandcode"} Rich Thornett
+            %dd.twitter
+              %a{:href => "http://twitter.com/frogandcode"} @frogandcode
+            %dd.avatar
+              %a{:href => "http://dribbble.com/players/frogandcode"}
+                %img{:alt => "Rich Thornett avatar", :src => "http://dribbble.com/system/users/2/avatars/thumb/headshot.jpg"}/
+        %td
+          %a{:href => "http://dribbble.com/players/frogandcode/draftees"} 36
+        %td 2,819
+        %td 14,116
+        %td 1,822
+        %td 18,757
+      %tr
+        %td 5
+        %td.user
+          %dl
+            %dt
+              %a{:href => "http://dribbble.com/players/simplebits"} Dan Cederholm
+            %dd.twitter
+              %a{:href => "http://twitter.com/simplebits"} @simplebits
+            %dd.avatar
+              %a{:href => "http://dribbble.com/players/simplebits"}
+                %img{:alt => "Dan Cederholm avatar", :src => "http://dribbble.com/system/users/1/avatars/thumb/dancederholm-peek.jpg"}/
+        %td
+          %a{:href => "http://dribbble.com/players/simplebits/draftees"} 104
+        %td 10,218
+        %td 118,412
+        %td 4,612
+        %td 113,242
+      %tr
+        %td 6
+        %td.user
+          %dl
+            %dt
+              %a{:href => "http://dribbble.com/players/frogandcode"} Rich Thornett
+            %dd.twitter
+              %a{:href => "http://twitter.com/frogandcode"} @frogandcode
+            %dd.avatar
+              %a{:href => "http://dribbble.com/players/frogandcode"}
+                %img{:alt => "Rich Thornett avatar", :src => "http://dribbble.com/system/users/2/avatars/thumb/headshot.jpg"}/
+        %td
+          %a{:href => "http://dribbble.com/players/frogandcode/draftees"} 36
+        %td 2,819
+        %td 14,116
+        %td 1,822
+        %td 18,757
+      %tr
+        %td 7
+        %td.user
+          %dl
+            %dt
+              %a{:href => "http://dribbble.com/players/simplebits"} Dan Cederholm
+            %dd.twitter
+              %a{:href => "http://twitter.com/simplebits"} @simplebits
+            %dd.avatar
+              %a{:href => "http://dribbble.com/players/simplebits"}
+                %img{:alt => "Dan Cederholm avatar", :src => "http://dribbble.com/system/users/1/avatars/thumb/dancederholm-peek.jpg"}/
+        %td
+          %a{:href => "http://dribbble.com/players/simplebits/draftees"} 104
+        %td 10,218
+        %td 118,412
+        %td 4,612
+        %td 113,242
+      %tr
+        %td 8
+        %td.user
+          %dl
+            %dt
+              %a{:href => "http://dribbble.com/players/frogandcode"} Rich Thornett
+            %dd.twitter
+              %a{:href => "http://twitter.com/frogandcode"} @frogandcode
+            %dd.avatar
+              %a{:href => "http://dribbble.com/players/frogandcode"}
+                %img{:alt => "Rich Thornett avatar", :src => "http://dribbble.com/system/users/2/avatars/thumb/headshot.jpg"}/
+        %td
+          %a{:href => "http://dribbble.com/players/frogandcode/draftees"} 36
+        %td 2,819
+        %td 14,116
+        %td 1,822
+        %td 18,757
+      %tr
+        %td 9
+        %td.user
+          %dl
+            %dt
+              %a{:href => "http://dribbble.com/players/simplebits"} Dan Cederholm
+            %dd.twitter
+              %a{:href => "http://twitter.com/simplebits"} @simplebits
+            %dd.avatar
+              %a{:href => "http://dribbble.com/players/simplebits"}
+                %img{:alt => "Dan Cederholm avatar", :src => "http://dribbble.com/system/users/1/avatars/thumb/dancederholm-peek.jpg"}/
+        %td
+          %a{:href => "http://dribbble.com/players/simplebits/draftees"} 104
+        %td 10,218
+        %td 118,412
+        %td 4,612
+        %td 113,242
+      %tr
+        %td 10
+        %td.user
+          %dl
+            %dt
+              %a{:href => "http://dribbble.com/players/frogandcode"} Rich Thornett
+            %dd.twitter
+              %a{:href => "http://twitter.com/frogandcode"} @frogandcode
+            %dd.avatar
+              %a{:href => "http://dribbble.com/players/frogandcode"}
+                %img{:alt => "Rich Thornett avatar", :src => "http://dribbble.com/system/users/2/avatars/thumb/headshot.jpg"}/
+        %td
+          %a{:href => "http://dribbble.com/players/frogandcode/draftees"} 36
+        %td 2,819
+        %td 14,116
+        %td 1,822
+        %td 18,757
+#footer
+  %p
+    Scouuuts
+    %span{:style => "text-decoration: line-through;"} was built by
+    is being built by
+    %a{:href => "http://darowski.com"} Adam Darowski
+    and
+    = succeed "." do
+      %a{:href => "http://semanticart.com"} Jeffrey Chupp
