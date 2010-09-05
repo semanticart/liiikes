@@ -7,17 +7,9 @@ gem 'rails', '3.0.0'
 
 gem 'pg'
 
-# Use unicorn as the web server
-# gem 'unicorn'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+gem "will_paginate", "~> 3.0.pre2"
 
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
 
 gem 'haml'
 gem 'compass'
