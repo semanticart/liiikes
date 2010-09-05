@@ -20,6 +20,63 @@
         %th.draftee-stat Views
         %th.draftee-stat Likes
     %tbody
+      -@players.each do |player|
+        %tr
+          %td #
+          %td.user
+            %dl
+              %dt
+                %a{:href => player.url}= player.name
+              %dd.twitter
+                =twitter_link(player)
+              %dd.avatar
+                %a{:href => player.url}
+                  %img{:alt => "#{player.name} avatar", :src => player.avatar_url}/
+          %td
+            %div.draftees
+              %a{:href => "http://dribbble.com/players/#{player.id}/draftees"}= player.draftees_count
+              .top-draftees
+                .arrow
+                %dl
+                  %dt
+                    =possessive(player.name)
+                    %span Top Draftees
+                  %dd
+                    %ol
+                      %li
+                        %a{:href => "http://dribbble.com/players/adarowski"}
+                          %img.draftee-avatar{:alt => "Adam Darowski avatar", :src => "http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg?1249513132"}/
+                          Adam Darowski
+                        (2,143)
+                      %li
+                      %a{:href => "http://dribbble.com/players/adarowski"}
+                        %img.draftee-avatar{:alt => "Adam Darowski avatar", :src => "http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg?1249513132"}/
+                        Adam Darowski
+                      (2,143)
+                    %li
+                      %a{:href => "http://dribbble.com/players/adarowski"}
+                        %img.draftee-avatar{:alt => "Adam Darowski avatar", :src => "http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg?1249513132"}/
+                        Adam Darowski
+                      (2,143)
+                    %li
+                      %a{:href => "http://dribbble.com/players/adarowski"}
+                        %img.draftee-avatar{:alt => "Adam Darowski avatar", :src => "http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg?1249513132"}/
+                        Adam Darowski
+                      (2,143)
+                    %li
+                      %a{:href => "http://dribbble.com/players/adarowski"}
+                        %img.draftee-avatar{:alt => "Adam Darowski avatar", :src => "http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg?1249513132"}/
+                        Adam Darowski
+                      (2,143)
+          %td= player.shots_count
+          %td N/A
+          %td= player.likes_received_count
+          %td #
+
+
+
+
+
       %tr
         %td 1
         %td.user
