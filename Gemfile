@@ -22,6 +22,9 @@ gem 'pg'
 gem 'haml'
 gem 'compass'
 
+gem 'httparty'
+gem 'swish'
+
 group :development, :test do
   gem 'ruby-debug'
   gem 'redgreen'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100830223551) do
+ActiveRecord::Schema.define(:version => 20100905002626) do
 
   create_table "players", :force => true do |t|
     t.string   "name"
@@ -23,9 +23,14 @@ ActiveRecord::Schema.define(:version => 20100830223551) do
     t.integer  "draftees_count"
     t.integer  "followers_count"
     t.integer  "following_count"
-    t.datetime "d_created_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comments_count",          :default => 0
+    t.integer  "comments_received_count", :default => 0
+    t.integer  "likes_count",             :default => 0
+    t.integer  "likes_received_count",    :default => 0
+    t.integer  "rebounds_count",          :default => 0
+    t.integer  "rebounds_received_count", :default => 0
   end
 
 end
