@@ -11,13 +11,12 @@
         %th{:rowspan => "2"} Rank
         %th.player{:rowspan => "2"} Player
         %th{:rowspan => "2"} Draftees
-        %th.draftee-stats{:colspan => "3"} Draftee Stats
+        %th.draftee-stats{:colspan => "2"} Draftee Stats
         %th{:rowspan => "2"}
           = link_to "LAA", :controller => "about"
           Score
       %tr
         %th.draftee-stat Shots
-        %th.draftee-stat Views
         %th.draftee-stat Likes
     %tbody
       -@players.each do |player|
@@ -51,6 +50,5 @@
                               = draftee.name
                             (#)
           %td= player.shots_count
-          %td N/A
           %td= player.likes_received_count
           %td #
