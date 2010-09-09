@@ -11,13 +11,13 @@
         %th{:rowspan => "2"} Rank
         %th.player{:rowspan => "2"} Player
         %th{:rowspan => "2"} Draftees
-        %th.draftee-stats{:colspan => "2"} Draftee Stats
-        %th{:rowspan => "2"}
-          = link_to "LAA", :controller => "about"
-          Score
+        %th.draftee-stats{:colspan => "3"} Draftee Stats
       %tr
         %th.draftee-stat Shots
         %th.draftee-stat Likes
+        %th.draftee-stat
+          = link_to "LAA", :controller => "about"
+          Score
     %tbody
       -@players.each_with_index do |player, i|
         %tr
