@@ -21,27 +21,18 @@ class Player < ActiveRecord::Base
     attributes.keys - ['updated_at']
   end
 
-  # only 1 level deep so far (intentionally)
-  def calculate_laa(average_likes_per_shot = nil)
-    average_likes_per_shot ||= Player.average_likes_per_shot
-
-    draftees_attr = {:likes_received_count => 0, :shots_count => 0}
-
-    draftees.inject(draftees_attr) do |hash, draftee|
-      hash[:likes_received_count] ||= 0
-      hash[:shots_count] ||= 0
-
-      hash[:likes_received_count] += draftee.likes_received_count
-      hash[:shots_count] += draftee.shots_count
-
-      hash
-    end
-
-    # TODO: shouldn't this consider the number of draftees?
-    if draftees_attr[:shots_count] > 0
-      self.laa = (draftees_attr[:likes_received_count] / draftees_attr[:shots_count]) - average_likes_per_shot
+  def calculate_personal_laa(average_likes_per_shot)
+    self.personal_laa = if shots_count == 0
+      0
     else
-      self.laa = 0 - average_likes_per_shot
+      likes_received_count / shots_count.to_f - average_likes_per_shot
+    end
+  end
+
+  # only 1 level deep so far (intentionally)
+  def calculate_laa(average_likes_per_shot = Player.average_likes_per_shot)
+    self.laa = draftees.inject(0) do |sum, draftee|
+      sum + draftee.calculate_personal_laa(average_likes_per_shot)
     end
   end
 

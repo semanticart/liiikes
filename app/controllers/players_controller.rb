@@ -3,6 +3,6 @@ class PlayersController < ApplicationController
 
   def index
     @page = [params[:page].to_i, 1].max
-    @players = Player.paginate(:page => @page, :per_page => PER_PAGE, :order => "laa desc", :include => :draftees)
+    @players = Player.paginate(:page => @page, :per_page => PER_PAGE, :order => "laa desc, id asc", :include => :draftees)
   end
 end

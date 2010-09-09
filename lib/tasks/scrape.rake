@@ -48,7 +48,9 @@ task :calculate_laas => :environment do
   average_likes_per_shot = Player.average_likes_per_shot
   Player.transaction do
     Player.all(:include => :draftees).each do |player|
+      puts "handling #{player.id}"
       player.calculate_laa(average_likes_per_shot)
+      player.calculate_personal_laa(average_likes_per_shot)
       player.save!
     end
   end
