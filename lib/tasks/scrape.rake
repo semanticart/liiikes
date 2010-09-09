@@ -42,3 +42,14 @@ task :scrape_players => :environment do
 
   puts "done in #{api_requests} api requests"
 end
+
+
+task :calculate_laas => :environment do
+  average_likes_per_shot = Player.average_likes_per_shot
+  Player.transaction do
+    Player.all(:include => :draftees).each do |player|
+      player.calculate_laa(average_likes_per_shot)
+      player.save!
+    end
+  end
+end
