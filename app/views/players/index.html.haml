@@ -48,9 +48,9 @@
                             %a{:href => draftee.url}
                               %img.draftee-avatar{:alt => "#{draftee.name} avatar", :src => draftee.avatar_url}/
                               = draftee.name
-                            ="(#{draftee.personal_laa.round.to_i})"
+                            ="(#{sprintf("%.1f",draftee.personal_laa)})"
           %td= player.shots_count
           %td= player.likes_received_count
-          %td= player.laa.round.to_i
+          %td= sprintf("%.1f",player.laa)
 
   =will_paginate(@players)
