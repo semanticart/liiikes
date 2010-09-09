@@ -1,6 +1,8 @@
 class PlayersController < ApplicationController
+  PER_PAGE = 20
+
   def index
-    # TODO: this should order by rank
-    @players = Player.paginate(:page => 1, :per_page => 20, :order => "id asc", :include => :draftees)
+    @page = [params[:page].to_i, 1].max
+    @players = Player.paginate(:page => @page, :per_page => PER_PAGE, :order => "laa desc", :include => :draftees)
   end
 end

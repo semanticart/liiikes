@@ -19,9 +19,9 @@
         %th.draftee-stat Shots
         %th.draftee-stat Likes
     %tbody
-      -@players.each do |player|
+      -@players.each_with_index do |player, i|
         %tr
-          %td #
+          %td= (@page - 1) * PlayersController::PER_PAGE + i + 1
           %td.user
             %dl
               %dt
@@ -51,4 +51,6 @@
                             (#)
           %td= player.shots_count
           %td= player.likes_received_count
-          %td #
+          %td= sprintf("%.1f", player.laa)
+
+  =will_paginate(@players)
