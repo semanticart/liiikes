@@ -1,3 +1,23 @@
+=border_radius(!radius)
+  -moz-border-radius = "#{!radius}"
+  -webkit-border-radius = "#{!radius}"
+  border-radius = "#{!radius}"
+
+=box_shadow(!color, !values)
+  -webkit-box-shadow = "#{!color} #{!values}"
+  -moz-box-shadow = "#{!color} #{!values}"
+  box-shadow = "#{!color} #{!values}"
+
+=box_gradient(!top,!bottom)
+  background-image = "-moz-linear-gradient(top, #{!top}, #{!bottom})"
+  background-image = "-webkit-gradient(linear,left top,left bottom,color-stop(0, #{!top}),color-stop(1, #{!bottom}))"
+  -ms-filter = "\"progid:DXImageTransform.Microsoft.gradient(startColorStr='#{!top}', EndColorStr='#{!bottom}')\""
+  *filter = "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{!top}', EndColorStr='#{!bottom}')"
+
+=reset
+  margin: 0
+  padding: 0
+
 body
   margin: 0 auto
   background-color: #EEE
@@ -13,23 +33,24 @@ a
   &:hover
     text-decoration: underline
 
+header, footer, nav, section
+  display: block
+
 img
   border-width: 0
 
 #wrapper
+  +box_shadow(#AAA, 0px 0px 5px)
   border-top: 6px solid #EA4C88
   width: 80%
   padding: 20px
   background-color: #FFF
   margin: 20px auto
-  -moz-box-shadow: #AAA 0px 0px 5px
-  -webkit-box-shadow: #AAA 0px 0px 5px
-  box-shadow: #AAA 0px 0px 5px
 
 h1
   text-align: center
   font-size: 100px
-  margin: 20px 0
+  margin: 10px 0
   text-shadow: #999 0px 0px 8px
 
 h2
@@ -45,8 +66,52 @@ p
 p.tagline
   text-align: center
   color: #999
-  a
+  margin: 30px 0
+  a[rel=external]
     color: #666
+
+nav
+  border-bottom: 1px solid #DDD
+  ul
+    list-style: none
+    +reset
+    text-align: center
+    li
+      display: inline-block
+      width: 45%
+      +reset
+      a
+        +border_radius(10px 10px 0 0)
+        +box_gradient(#EEE, #EEE)
+        width: 100%
+        text-align: center
+        display: inline-block
+        border:
+          width: 1px 1px 0 1px
+          color: #DDD
+          style: solid
+        padding: 10px 0
+        font-weight: bold
+        &:link
+          color: #666
+        small
+          font-weight: normal
+          display: block
+          color: #999
+        &:hover
+          color: #EA4C88
+          text-decoration: none
+          small
+            color: #666
+      &.nav-scouts
+        a
+          +box_gradient(#EEE, #FFF)
+          color: #EA4C88
+          font-weight: bold
+          margin-bottom: -1px
+          padding-bottom: 11px
+          small
+            color: #666
 
 table
   width: 100%
@@ -90,12 +155,10 @@ dd
     top: 0
     left: 0
     img
+      +border_radius(4px)
       height: 40px
       width: 40px
       border: 1px solid #DDD
-      -moz-border-radius: 4px
-      -webkit-border-radius: 4px
-      border-radius: 4px
       padding: 4px
       background-color: #FFF
   &.twitter
@@ -120,7 +183,7 @@ th
     font-size: 13px
     background-color: #EEE
 
-#footer
+footer
   margin: 20px auto 100px
   p
     text-align: center
@@ -130,15 +193,13 @@ th
   position: relative
 
 .top-draftees
+  +border_radius(8px)
   position: absolute
   background-color: rgba(0, 0, 0, 0.85)
   padding: 20px
   z-index: 1
   text-align: left
   color: #FFF
-  -moz-border-radius: 8px
-  -webkit-border-radius: 8px
-  border-radius: 8px
   top: -32px
   left: 92%
   width: 220px
@@ -175,3 +236,4 @@ div.arrow
   border-bottom: 20px solid transparent
   border-right: 20px solid rgba(0, 0, 0, 0.85)
   border-left: 20px solid transparent
+
