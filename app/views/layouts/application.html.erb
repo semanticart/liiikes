@@ -4,11 +4,31 @@
   <title>Liiikes</title>
   <%= stylesheet_link_tag 'main' %>
   <%= javascript_include_tag 'jquery', 'application' %>
+  <meta charset="UTF-8">
   <%= csrf_meta_tag %>
 </head>
 <body>
 
-<%= yield %>
+<div id="wrapper">
+  <header>
+    <h1><a href="/">Liiikes</a></h1>
+    <p class="tagline">Using statistics to fond the best content on <a rel="external" href="http://dribbble.com">Dribbble</a>. <%= link_to '(About)', {:controller => 'about'} %></p>
+  </header>
+  <nav>
+    <ul>
+      <li id="nav-players">
+        <a href="#">Top Players <small>Who's posting the best content to Dribbble?</small></a>
+      </li>
+      <li id="nav-scouts">
+        <a href="#">Top Scouts <small>Who's drafting the best talent to Dribbble?</small></a>
+      </li>
+    </ul>
+  </nav>
+
+  <%= yield %>
+
+</div>
+
 
 <footer>
   <p>Liiikes was built by <a href="http://darowski.com">Adam Darowski</a> and <a href="http://semanticart.com">Jeffrey Chupp</a>.</p>
