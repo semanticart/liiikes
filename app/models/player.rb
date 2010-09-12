@@ -18,7 +18,7 @@ class Player < ActiveRecord::Base
   end
 
   def compatible_attributes
-    attributes.keys - ['updated_at']
+    attributes.keys - ['updated_at', 'laa', 'personal_laa']
   end
 
   def calculate_personal_laa(average_likes_per_shot)
