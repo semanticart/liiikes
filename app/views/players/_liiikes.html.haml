@@ -1,0 +1,27 @@
+%thead
+  %tr
+    %th{:rowspan => "2"} Rank
+    %th.player{:rowspan => "2"} Player
+  %tr
+    %th.player-stat Shots
+    %th.player-stat Likes
+    %th.player-stat
+      = link_to "Personal LAA", :controller => "about"
+      Score
+%tbody
+  -@players.each_with_index do |player, i|
+    %tr
+      %td= (@page - 1) * PlayersController::PER_PAGE + i + 1
+      %td.user
+        %dl
+          %dt
+            %a{:href => player.url}= player.name
+          %dd.twitter
+            =twitter_link(player)
+          %dd.avatar
+            %a{:href => player.url}
+              %img{:alt => "#{player.name} avatar", :src => player.avatar_url}/
+      %td= player.shots_count
+      %td= player.likes_received_count
+      %td= sprintf("%.1f", player.personal_laa)
+

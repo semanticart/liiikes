@@ -1,50 +1,5 @@
 %section#players
   %table
-    %thead
-      %tr
-        %th{:rowspan => "2"} Rank
-        %th.player{:rowspan => "2"} Player
-        %th{:rowspan => "2"} Draftees
-        %th.draftee-stats{:colspan => "3"} Draftee Stats
-      %tr
-        %th.draftee-stat Shots
-        %th.draftee-stat Likes
-        %th.draftee-stat
-          = link_to "LAA", :controller => "about"
-          Score
-    %tbody
-      -@players.each_with_index do |player, i|
-        %tr
-          %td= (@page - 1) * PlayersController::PER_PAGE + i + 1
-          %td.user
-            %dl
-              %dt
-                %a{:href => player.url}= player.name
-              %dd.twitter
-                =twitter_link(player)
-              %dd.avatar
-                %a{:href => player.url}
-                  %img{:alt => "#{player.name} avatar", :src => player.avatar_url}/
-          %td
-            %div.draftees
-              %a{:href => "http://dribbble.com/players/#{player.id}/draftees"}= player.draftees_count
-              - if player.draftees.present?
-                .top-draftees
-                  .arrow
-                  %dl
-                    %dt
-                      =possessive(player.name)
-                      %span Top Draftees
-                    %dd
-                      %ol
-                        - player.draftees.each do |draftee|
-                          %li
-                            %a{:href => draftee.url}
-                              %img.draftee-avatar{:alt => "#{draftee.name} avatar", :src => draftee.avatar_url}/
-                              = draftee.name
-                            ="(#{sprintf("%.1f",draftee.personal_laa)})"
-          %td= player.shots_count
-          %td= player.likes_received_count
-          %td= sprintf("%.1f",player.laa)
+    = render :partial => @template
 
   =will_paginate(@players)

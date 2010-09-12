@@ -1,4 +1,12 @@
 module PlayersHelper
+  def viewing_players_tab?
+    ! viewing_scouuuts_tab?
+  end
+
+  def viewing_scouuuts_tab?
+    params[:view] == 'scouuuts'
+  end
+
   def twitter_link(player)
     if player.twitter_screen_name
       twitter_user = player.twitter_screen_name.sub(/^.*[@\/]/, '')
