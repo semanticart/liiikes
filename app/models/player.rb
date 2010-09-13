@@ -47,4 +47,13 @@ class Player < ActiveRecord::Base
 
     likes / shots.to_f
   end
+
+  # TODO: make these 2 methods performant
+    def scouuuts_likes_received_count
+      draftees.inject(0){|sum, draftee| sum + draftee.likes_received_count}
+    end
+
+    def scouuuts_shots_count
+      draftees.inject(0){|sum, draftee| sum + draftee.shots_count}
+    end
 end

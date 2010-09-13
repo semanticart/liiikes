@@ -8,7 +8,7 @@
     %th.draftee-stat Shots
     %th.draftee-stat Likes
     %th.draftee-stat
-      = link_to "LAA", :controller => "about"
+      %abbr{:title => "Likes Above Average"} LAA
       Score
 %tbody
   -@players.each_with_index do |player, i|
@@ -41,6 +41,6 @@
                           %img.draftee-avatar{:alt => "#{draftee.name} avatar", :src => draftee.avatar_url}/
                           = draftee.name
                         ="(#{sprintf("%.1f",draftee.personal_laa)})"
-      %td= player.shots_count
-      %td= player.likes_received_count
+      %td= player.scouuuts_shots_count
+      %td= player.scouuuts_likes_received_count
       %td= sprintf("%.1f",player.laa)
