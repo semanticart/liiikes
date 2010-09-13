@@ -92,7 +92,7 @@ nav
           style: solid
         padding: 10px 0
         font-weight: bold
-        &:link
+        &:link, &:hover, &:visited, &:active
           color: #666
         small
           font-weight: normal
@@ -103,7 +103,7 @@ nav
           text-decoration: none
           small
             color: #666
-      &#nav-scouts
+      &.selected
         a
           +box_gradient(#EEE, #FFF)
           color: #EA4C88
