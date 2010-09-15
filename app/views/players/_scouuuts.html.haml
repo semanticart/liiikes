@@ -8,7 +8,8 @@
     %th.draftee-stat Shots
     %th.draftee-stat Likes
     %th.draftee-stat
-      %abbr{:title => "Likes Above Average"} LAA
+      %a{:href => 'about/'}
+        %abbr{:title => "Likes Above Average"} LAA
       Score
 %tbody
   -@players.each_with_index do |player, i|
