@@ -2,12 +2,16 @@
   %table
     = render :partial => @template
 
-  .minimum-shots
-    Minimum of
-    %select{:name => 'sample-size', :id => 'sample-size'}
-      %option{:value => '1 Shot'} 1 Shot
-      %option{:value => '10 Shot', :selected => 'selected'} 10 Shots
-      %option{:value => '50 Shot'} 50 Shots
-      %option{:value => '100 Shot'} 100 Shots
+  #minimum-shots
+    %span Shot Minimum:
+    %ul
+      %li#shots-1
+        %a{:href => '#'} 1
+      %li#shots-10
+        %a.selected{:href => '#'} 10
+      %li#shots-50
+        %a{:href => '#'} 50
+      %li#shots-100
+        %a{:href => '#'} 100
 
   =will_paginate(@players)

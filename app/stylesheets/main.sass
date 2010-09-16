@@ -252,7 +252,9 @@ div.arrow
 
 .pagination
   font-size: 12px
-  margin-bottom: 20px
+  margin:
+    top: 10px
+    bottom: 20px
   a:link, a:visited, a:hover, a:active
     border: 1px solid #DDD
     padding: 3px 6px
@@ -268,10 +270,53 @@ div.arrow
       style: normal
       weight: bold
 
-.minimum-shots
+#minimum-shots
   float: right
-  font-size: 12px
+  font-size: 14px
   color: #666
+  text-align: right
+  span
+    float: left
+    margin:
+      right: 5px
+      top: 4px
+  ul
+    display: inline
+    margin: 0
+    padding: 0
+    list-style: none
+    li
+      float: left
+      display: block
+      margin: 0
+      padding: 0
+      a
+        display: block
+        width: 30px
+        text-align: center
+        border: 1px solid #EA4C88
+        padding: 3px 10px
+        +box_gradient(#FF7EBA,#EA4C88)
+        color: #DDD
+        &:hover, &.selected
+          font-weight: bold
+          +box_gradient(#EA4C88,#FF7EBA)
+          color: #FFF
+          text-decoration: none
+
+      &#shots-1
+        a
+          +border_radius(6px 0 0 6px)
+          border-right-width: 0
+      &#shots-10
+        a
+          border-right-width: 0
+      &#shots-50
+        a
+          border-right-width: 0
+      &#shots-100
+        a
+          +border_radius(0 6px 6px 0)
 
 #player
   position: relative
