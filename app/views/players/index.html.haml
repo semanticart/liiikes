@@ -4,14 +4,17 @@
 
   #minimum-shots
     %span Shot Minimum:
-    %ul
-      %li#shots-1
-        %a{:href => '#'} 1
-      %li#shots-10
-        %a.selected{:href => '#'} 10
-      %li#shots-50
-        %a{:href => '#'} 50
-      %li#shots-100
-        %a{:href => '#'} 100
+    %label{:for => 'shot-sample-1'}
+      1
+      %input{:type => 'radio', :name => 'shot-sample', :id => 'shot-sample-1', :value => '1'}
+    %label.selected{:for => 'shot-sample-10'}
+      10
+      %input{:type => 'radio', :name => 'shot-sample', :id => 'shot-sample-10', :value => '10', :checked => 'checked'}
+    %label{:for => 'shot-sample-50'}
+      50
+      %input{:type => 'radio', :name => 'shot-sample', :id => 'shot-sample-50', :value => '50'}
+    %label{:for => 'shot-sample-100'}
+      100
+      %input{:type => 'radio', :name => 'shot-sample', :id => 'shot-sample-100', :value => '100'}
 
   =will_paginate(@players)
