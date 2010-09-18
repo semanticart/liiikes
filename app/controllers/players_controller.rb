@@ -1,7 +1,8 @@
 class PlayersController < ApplicationController
-  caches_page :index, :show
-
   PER_PAGE = 20
+  before_filter :enforce_defaults
+  before_filter :set_shot_sample
+  caches_page :index, :show
 
   def index
     @page = [params[:page].to_i, 1].max
@@ -37,5 +38,14 @@ class PlayersController < ApplicationController
     else
       'liiikes'
     end
+  end
+
+  def enforce_defaults
+    params[:view] = 'players' unless params[:view] == 'scouuuts'
+    params[:shot_sample] = '10' unless [1,10,50,100].include?(params[:shot_sample].to_i)
+  end
+
+  def set_shot_sample
+    @shot_sample = params[:shot_sample].to_i
   end
 end

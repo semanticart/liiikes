@@ -49,9 +49,12 @@ Scouuuts::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
 
-  match 'scouuuts', :to => "players#index", :view => 'scouuuts'
+  match ':view/sample/:shot_sample/page/:page', :to => "players#index"
+  match ':view/page/:page', :to => "players#index"
+
   resources :about, :players
-  root :to => "players#index"
+  match 'scouuuts', :to => "players#index", :view => 'scouuuts'
+  root :to => "players#index", :view => 'players', :page => nil
 
   # See how all your routes lay out with "rake routes"
 

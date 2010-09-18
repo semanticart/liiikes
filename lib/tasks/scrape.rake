@@ -55,3 +55,10 @@ task :calculate_laas => :environment do
     end
   end
 end
+
+task :clear_prod_cache => :environment do
+  require 'fileutils'
+  FileUtils.rm_rf "#{Rails.root}/public/players/"
+  FileUtils.rm_rf "#{Rails.root}/public/scouuuts/"
+  FileUtils.rm "#{Rails.root}/public/index.html"
+end

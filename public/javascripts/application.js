@@ -5,6 +5,6 @@ $(document).ready(function(){
   });
 
   $("#minimum-shots input[type=radio]").click(function(){
-    $(this).closest('form').submit();
+    window.location = '/' + $('#view').val() + "/sample/" + $(this).val() + "/page/1";
   });
 });
