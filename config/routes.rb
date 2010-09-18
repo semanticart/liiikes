@@ -50,8 +50,7 @@ Scouuuts::Application.routes.draw do
   # just remember to delete public/index.html.
 
   match 'scouuuts', :to => "players#index", :view => 'scouuuts'
-
-  resources :about
+  resources :about, :players
   root :to => "players#index"
 
   # See how all your routes lay out with "rake routes"

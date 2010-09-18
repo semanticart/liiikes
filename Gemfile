@@ -15,7 +15,7 @@ gem 'haml'
 gem 'compass'
 
 gem 'httparty'
-gem 'swish'
+gem 'swish', '0.6.0'
 
 group :development, :test do
   gem 'ruby-debug'

@@ -1,7 +1,11 @@
 class Player < ActiveRecord::Base
   belongs_to :drafted_by, :class_name => 'Player', :foreign_key => :drafted_by_player_id
 
-  has_many :draftees, :class_name => 'Player', :foreign_key => :drafted_by_player_id
+  has_many :draftees, :class_name => 'Player', :foreign_key => :drafted_by_player_id, :order => "personal_laa desc"
+
+  def self.find_by_login(login)
+    find_by_url("http://dribbble.com/players/#{login}")
+  end
 
   def self.from_api(swish_player)
     player = Player.find_by_id(swish_player.id) || begin
@@ -14,11 +18,22 @@ class Player < ActiveRecord::Base
     player.compatible_attributes.each do |key|
       player.send("#{key}=", swish_player.send(key))
     end
+
+    player.name = player.dribbble_login if player.name.blank?
+
     player.save!
   end
 
+  def dribbble_login
+    url.split('/').last
+  end
+
+  def to_param
+    dribbble_login
+  end
+
   def compatible_attributes
-    attributes.keys - ['updated_at', 'laa', 'personal_laa']
+    attributes.keys - ['updated_at', 'laa', 'personal_laa', 'laa_1', 'laa_10', 'laa_50', 'laa_100']
   end
 
   def calculate_personal_laa(average_likes_per_shot)
@@ -57,12 +72,16 @@ class Player < ActiveRecord::Base
     likes / shots.to_f
   end
 
-  # TODO: make these 2 methods performant
-    def scouuuts_likes_received_count
+  # TODO: make these 3 methods performant
+    def draftee_likes_received_count
       draftees.inject(0){|sum, draftee| sum + draftee.likes_received_count}
     end
 
-    def scouuuts_shots_count
+    def draftee_shots_count
       draftees.inject(0){|sum, draftee| sum + draftee.shots_count}
+    end
+
+    def draftee_total_laa
+      draftees.inject(0){|sum, draftee| sum + draftee.personal_laa}
     end
 end

@@ -13,6 +13,10 @@ class PlayersController < ApplicationController
     end
   end
 
+  def show
+    @player = Player.find_by_login(params[:id])
+  end
+
   protected
 
   def options_from_params

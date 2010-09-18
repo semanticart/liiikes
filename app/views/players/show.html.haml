@@ -1,10 +1,17 @@
 %section#player
 
-  %h2 Adam Darowski
+  %h2= @player.name
   %ul
-    %li On the web: darowski.com
-    %li On Twitter: adarowski
-    %li On Dribbble: adarowski
+    - if @player.website_url.present?
+      %li
+        On the web:
+      = link_to @player.website_url.split(/http(s)*\:\/\//).last, @player.website_url
+    %li
+      On Twitter:
+      = twitter_link(@player)
+    %li
+      On Dribbble:
+      = link_to(@player.dribbble_login, @player.url)
 
   %table#player-stats
     %thead
@@ -16,91 +23,40 @@
         Score
     %tbody
       %tr
-        %td 53
-        %td 95
-        %td -4.6
+        %td= @player.shots_count
+        %td= @player.likes_received_count
+        %td= sprintf("%.1f", @player.personal_laa)
 
-  %h3 17 Draftees
+  %h3= pluralize(@player.draftees_count, "Draftee")
 
-  %table#draftee-stats
-    %thead
-      %th.player Player
-      %th Shots
-      %th Likes
-      %th
-        %a{:href => 'about/'}
-          %abbr{:title => "Likes Above Average"} LAA
-        Score
-    %tbody
-      %tr
-        %td.user
-          %dl
-            %dt
-              %a{:href => '#'} Adam Darowski
-            %dd.twitter
-              %a{:href => '#'} adarowski
-            %dd.avatar
-              %a{:href => '#'}
-                %img{:alt => "Adam Darowski's avatar", :src => 'http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg'}
-        %td 53
-        %td 95
-        %td -4.6
-      %tr
-        %td.user
-          %dl
-            %dt
-              %a{:href => '#'} Adam Darowski
-            %dd.twitter
-              %a{:href => '#'} adarowski
-            %dd.avatar
-              %a{:href => '#'}
-                %img{:alt => "Adam Darowski's avatar", :src => 'http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg'}
-        %td 53
-        %td 95
-        %td -4.6
-      %tr
-        %td.user
-          %dl
-            %dt
-              %a{:href => '#'} Adam Darowski
-            %dd.twitter
-              %a{:href => '#'} adarowski
-            %dd.avatar
-              %a{:href => '#'}
-                %img{:alt => "Adam Darowski's avatar", :src => 'http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg'}
-        %td 53
-        %td 95
-        %td -4.6
-      %tr
-        %td.user
-          %dl
-            %dt
-              %a{:href => '#'} Adam Darowski
-            %dd.twitter
-              %a{:href => '#'} adarowski
-            %dd.avatar
-              %a{:href => '#'}
-                %img{:alt => "Adam Darowski's avatar", :src => 'http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg'}
-        %td 53
-        %td 95
-        %td -4.6
-      %tr
-        %td.user
-          %dl
-            %dt
-              %a{:href => '#'} Adam Darowski
-            %dd.twitter
-              %a{:href => '#'} adarowski
-            %dd.avatar
-              %a{:href => '#'}
-                %img{:alt => "Adam Darowski's avatar", :src => 'http://dribbble.com/system/users/7/avatars/thumb/DSC_0188_4_bigger.jpg'}
-        %td 53
-        %td 95
-        %td -4.6
+  - if @player.draftees_count > 0
+    %table#draftee-stats
+      %thead
+        %th.player Player
+        %th Shots
+        %th Likes
+        %th
+          %a{:href => 'about/'}
+            %abbr{:title => "Likes Above Average"} LAA
+          Score
+      %tbody
+        - @player.draftees.each do |draftee|
+          %tr
+            %td.user
+              %dl
+                %dt
+                  = link_to draftee.name, player_path(draftee)
+                %dd.twitter
+                  = twitter_link(draftee)
+                %dd.avatar
+                  %a{:href => draftee.url}
+                    %img{:alt => "#{possessive(draftee.name)} avatar", :src => draftee.avatar_url}/
+            %td= draftee.shots_count
+            %td= draftee.likes_received_count
+            %td= sprintf("%.1f", draftee.personal_laa)
 
-
-      %tr.totals
-        %td Totals
-        %td 265
-        %td 475
-        %td -23.0
+        %tr.totals
+          %td Totals
+          %td= @player.draftee_shots_count
+          %td= @player.draftee_likes_received_count
+          %td= sprintf("%.1f", @player.draftee_total_laa)

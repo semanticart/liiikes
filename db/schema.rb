@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100918154711) do
+ActiveRecord::Schema.define(:version => 20100918162157) do
 
   create_table "players", :force => true do |t|
     t.string   "name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20100918154711) do
     t.decimal  "laa_10"
     t.decimal  "laa_50"
     t.decimal  "laa_100"
+    t.string   "website_url"
   end
 
 end

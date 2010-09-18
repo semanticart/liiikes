@@ -18,7 +18,7 @@
       %td.user
         %dl
           %dt
-            %a{:href => player.url}= player.name
+            %a{:href => player_path(player)}= player.name
           %dd.twitter
             =twitter_link(player)
           %dd.avatar
@@ -30,7 +30,7 @@
           - if player.draftees.present?
             .top-draftees
               .arrow
-              - top_draftees = player.draftees.sort_by(&:personal_laa).reverse[0..9]
+              - top_draftees = player.draftees[0..9]
               %dl
                 %dt
                   =possessive(player.name)
@@ -42,9 +42,9 @@
                     - top_draftees.each do |draftee|
                       %li
                         %a{:href => draftee.url}
-                          %img.draftee-avatar{:alt => "#{draftee.name} avatar", :src => draftee.avatar_url}/
+                          %img.draftee-avatar{:alt => "#{possessive(draftee.name)} avatar", :src => draftee.avatar_url}/
                           = draftee.name
                         ="(#{sprintf("%.1f",draftee.personal_laa)})"
-      %td= player.scouuuts_shots_count
-      %td= player.scouuuts_likes_received_count
+      %td= player.draftee_shots_count
+      %td= player.draftee_likes_received_count
       %td= sprintf("%.1f",player.laa)
