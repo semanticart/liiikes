@@ -1,4 +1,6 @@
 class PlayersController < ApplicationController
+  caches_page :index, :show
+
   PER_PAGE = 20
 
   def index

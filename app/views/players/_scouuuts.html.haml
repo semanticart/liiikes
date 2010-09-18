@@ -47,4 +47,4 @@
                         ="(#{sprintf("%.1f",draftee.personal_laa)})"
       %td= player.draftee_shots_count
       %td= player.draftee_likes_received_count
-      %td= sprintf("%.1f",player.laa)
+      %td= sprintf("%.1f",player.send("laa_#{@shot_sample}"))
