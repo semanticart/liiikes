@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100909010910) do
+ActiveRecord::Schema.define(:version => 20100918154711) do
 
   create_table "players", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(:version => 20100909010910) do
     t.integer  "rebounds_received_count", :default => 0
     t.decimal  "laa"
     t.decimal  "personal_laa"
+    t.decimal  "laa_1"
+    t.decimal  "laa_10"
+    t.decimal  "laa_50"
+    t.decimal  "laa_100"
   end
 
 end

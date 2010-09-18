@@ -3,18 +3,19 @@
     = render :partial => @template
 
   #minimum-shots
-    %span Shot Minimum:
-    %label{:for => 'shot-sample-1'}
-      1
-      %input{:type => 'radio', :name => 'shot-sample', :id => 'shot-sample-1', :value => '1'}
-    %label.selected{:for => 'shot-sample-10'}
-      10
-      %input{:type => 'radio', :name => 'shot-sample', :id => 'shot-sample-10', :value => '10', :checked => 'checked'}
-    %label{:for => 'shot-sample-50'}
-      50
-      %input{:type => 'radio', :name => 'shot-sample', :id => 'shot-sample-50', :value => '50'}
-    %label{:for => 'shot-sample-100'}
-      100
-      %input{:type => 'radio', :name => 'shot-sample', :id => 'shot-sample-100', :value => '100'}
+    %form
+      %span Shot Minimum:
+      %label{:for => 'shot-sample-1'}
+        1
+        %input{:type => 'radio', :name => 'shot-sample', :id => 'shot-sample-1', :value => '1', :checked => sample_is?(1)}
+      %label.selected{:for => 'shot-sample-10'}
+        10
+        %input{:type => 'radio', :name => 'shot-sample', :id => 'shot-sample-10', :value => '10', :checked => sample_is?(10)}
+      %label{:for => 'shot-sample-50'}
+        50
+        %input{:type => 'radio', :name => 'shot-sample', :id => 'shot-sample-50', :value => '50', :checked => sample_is?(50)}
+      %label{:for => 'shot-sample-100'}
+        100
+        %input{:type => 'radio', :name => 'shot-sample', :id => 'shot-sample-100', :value => '100', :checked => sample_is?(100)}
 
   =will_paginate(@players)

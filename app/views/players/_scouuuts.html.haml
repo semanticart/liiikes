@@ -30,13 +30,16 @@
           - if player.draftees.present?
             .top-draftees
               .arrow
+              - top_draftees = player.draftees.sort_by(&:personal_laa).reverse[0..9]
               %dl
                 %dt
                   =possessive(player.name)
-                  %span Top Draftees
+                  %span
+                    Top
+                    = pluralize(top_draftees.size, "Draftee")
                 %dd
                   %ol
-                    - player.draftees.each do |draftee|
+                    - top_draftees.each do |draftee|
                       %li
                         %a{:href => draftee.url}
                           %img.draftee-avatar{:alt => "#{draftee.name} avatar", :src => draftee.avatar_url}/

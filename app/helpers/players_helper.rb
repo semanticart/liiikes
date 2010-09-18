@@ -1,4 +1,8 @@
 module PlayersHelper
+  def sample_is?(number)
+    @shot_sample == number
+  end
+
   def viewing_players_tab?
     ! viewing_scouuuts_tab?
   end

@@ -31,8 +31,17 @@ class Player < ActiveRecord::Base
 
   # only 1 level deep so far (intentionally)
   def calculate_laa(average_likes_per_shot = Player.average_likes_per_shot)
-    self.laa = draftees.inject(0) do |sum, draftee|
-      sum + draftee.calculate_personal_laa(average_likes_per_shot)
+    laas = draftees.inject(Hash.new(0)) do |h, draftee|
+      h[:laa] += draftee.calculate_personal_laa(average_likes_per_shot)
+      h[:laa_1] += draftee.calculate_personal_laa(average_likes_per_shot) if draftee.shots_count > 0
+      h[:laa_10] += draftee.calculate_personal_laa(average_likes_per_shot) if draftee.shots_count >= 10
+      h[:laa_50] += draftee.calculate_personal_laa(average_likes_per_shot) if draftee.shots_count >= 50
+      h[:laa_100] += draftee.calculate_personal_laa(average_likes_per_shot) if draftee.shots_count > 100
+      h
+    end
+
+    laas.each_pair do |key, value|
+      self.send(:"#{key}=", value)
     end
   end
 
