@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/koppen/hassle.git
+  revision: a08c757bce033cebc7ef8a4a3a831127afcb956a
+  specs:
+    hassle (0.0.1)
+      haml
+      rack
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -88,6 +96,7 @@ PLATFORMS
 DEPENDENCIES
   compass
   haml
+  hassle!
   httparty
   pg
   rails (= 3.0.0)
