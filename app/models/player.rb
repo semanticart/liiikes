@@ -33,7 +33,7 @@ class Player < ActiveRecord::Base
   end
 
   def compatible_attributes
-    attributes.keys - ['updated_at', 'laa', 'personal_laa', 'laa_1', 'laa_10', 'laa_50', 'laa_100']
+    attributes.keys - ['updated_at', 'laa', 'personal_laa'] + SAMPLE_SIZES.map{|size| "laa_#{size}"}
   end
 
   def calculate_personal_laa(average_likes_per_shot)
@@ -48,10 +48,9 @@ class Player < ActiveRecord::Base
   def calculate_laa(average_likes_per_shot = Player.average_likes_per_shot)
     laas = draftees.inject(Hash.new(0)) do |h, draftee|
       h[:laa] += draftee.calculate_personal_laa(average_likes_per_shot)
-      h[:laa_1] += draftee.calculate_personal_laa(average_likes_per_shot) if draftee.shots_count > 0
-      h[:laa_10] += draftee.calculate_personal_laa(average_likes_per_shot) if draftee.shots_count >= 10
-      h[:laa_50] += draftee.calculate_personal_laa(average_likes_per_shot) if draftee.shots_count >= 50
-      h[:laa_100] += draftee.calculate_personal_laa(average_likes_per_shot) if draftee.shots_count > 100
+      SAMPLE_SIZES.each do |size|
+        h[:"laa_#{size}"] += draftee.calculate_personal_laa(average_likes_per_shot) if draftee.shots_count >= size
+      end
       h
     end
 
