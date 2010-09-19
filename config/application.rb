@@ -40,3 +40,5 @@ module Scouuuts
     config.filter_parameters += [:password]
   end
 end
+
+SAMPLE_SIZES = [1,10,50,100]

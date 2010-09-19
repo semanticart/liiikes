@@ -6,17 +6,10 @@
     %form
       %input{:type => "hidden", :id => "view", :value => params[:view]}
       %span Shot Minimum:
-      %label{:for => 'shot_sample-1'}
-        1
-        %input{:type => 'radio', :name => 'shot_sample', :id => 'shot_sample-1', :value => '1', :checked => sample_is?(1)}
-      %label.selected{:for => 'shot_sample-10'}
-        10
-        %input{:type => 'radio', :name => 'shot_sample', :id => 'shot_sample-10', :value => '10', :checked => sample_is?(10)}
-      %label{:for => 'shot_sample-50'}
-        50
-        %input{:type => 'radio', :name => 'shot_sample', :id => 'shot_sample-50', :value => '50', :checked => sample_is?(50)}
-      %label{:for => 'shot_sample-100'}
-        100
-        %input{:type => 'radio', :name => 'shot_sample', :id => 'shot_sample-100', :value => '100', :checked => sample_is?(100)}
+      - SAMPLE_SIZES.each do |size|
+        - selected = sample_is?(size)
+        %label{:for => "shot_sample-#{size}", :class => ("selected" if selected)}
+          =size
+          %input{:type => 'radio', :name => 'shot_sample', :id => "shot_sample-#{size}", :value => size, :checked => selected}
 
   =will_paginate(@players)

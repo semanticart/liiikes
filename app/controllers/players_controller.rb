@@ -42,7 +42,7 @@ class PlayersController < ApplicationController
 
   def enforce_defaults
     params[:view] = 'players' unless params[:view] == 'scouuuts'
-    params[:shot_sample] = '10' unless [1,10,50,100].include?(params[:shot_sample].to_i)
+    params[:shot_sample] = '10' unless SAMPLE_SIZES.include?(params[:shot_sample].to_i)
   end
 
   def set_shot_sample
