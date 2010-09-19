@@ -1,4 +1,8 @@
 module PlayersHelper
+  def display_website(player)
+    player.website_url.split(/http(s)*\:\/\//).last.gsub(/\/$/, '').downcase
+  end
+
   def sample_is?(number)
     @shot_sample == number
   end

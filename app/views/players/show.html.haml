@@ -5,7 +5,7 @@
     - if @player.website_url.present?
       %li
         On the web:
-      = link_to @player.website_url.split(/http(s)*\:\/\//).last, @player.website_url
+      = link_to display_website(@player), @player.website_url
     %li
       On Twitter:
       = twitter_link(@player)
