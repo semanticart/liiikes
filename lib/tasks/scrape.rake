@@ -56,9 +56,10 @@ task :calculate_laas => :environment do
   end
 end
 
-task :clear_prod_cache => :environment do
+task :clear_prod_cache do
   require 'fileutils'
-  FileUtils.rm_rf "#{Rails.root}/public/players/"
-  FileUtils.rm_rf "#{Rails.root}/public/scouuuts/"
-  FileUtils.rm "#{Rails.root}/public/index.html"
+  FileUtils.rm_rf "#{Rails.root}/public/players/" rescue puts "failed to delete players/"
+  FileUtils.rm_rf "#{Rails.root}/public/scouuuts/" rescue puts "failed to delete scouuuts/"
+  FileUtils.rm "#{Rails.root}/public/about.html" rescue puts "failed to delete about.html"
+  FileUtils.rm "#{Rails.root}/public/index.html" rescue puts "failed to delete index.html"
 end
