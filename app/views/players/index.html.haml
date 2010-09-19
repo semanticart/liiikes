@@ -8,8 +8,8 @@
       %span Shot Minimum:
       - SAMPLE_SIZES.each do |size|
         - selected = sample_is?(size)
-        %label{:for => "shot_sample-#{size}", :class => ("selected" if selected)}
+        %label{:for => "shot-sample-#{size}", :class => ("selected" if selected)}
           =size
-          %input{:type => 'radio', :name => 'shot_sample', :id => "shot_sample-#{size}", :value => size, :checked => selected}
+          %input{:type => 'radio', :name => 'shot_sample', :id => "shot-sample-#{size}", :value => size, :checked => selected}
 
   =will_paginate(@players)
