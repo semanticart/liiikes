@@ -1,19 +1,24 @@
 %section#player
 
-  %h2= @player.name
-  %ul
-    - if @player.website_url.present?
-      %li
-        On the web:
-      = link_to display_website(@player), @player.website_url
-    %li
-      On Twitter:
-      = twitter_link(@player)
-    %li
-      On Dribbble:
-      = link_to(@player.dribbble_login, @player.url)
+  #player-data
+    .avatar
+      %img{:alt => "#{@player.name} avatar", :src => @player.avatar_url}/
+
+    %h2= @player.name
+    %dl
+      - if @player.website_url.present?
+        %dt On the Web
+        %dd= link_to display_website(@player), @player.website_url
+      %dt On Twitter
+      %dd= twitter_link(@player)
+      %dt On Dribbble
+      %dd= link_to(@player.dribbble_login, @player.url)
 
   %table#player-stats
+    %caption
+      = succeed "'s" do
+        = @player.name
+      Stats
     %thead
       %th Shots
       %th Likes
@@ -27,36 +32,38 @@
         %td= @player.likes_received_count
         %td= sprintf("%.1f", @player.personal_laa)
 
-  %h3= pluralize(@player.draftees_count, "Draftee")
-
-  - if @player.draftees_count > 0
-    %table#draftee-stats
-      %thead
-        %th.player Player
-        %th Shots
-        %th Likes
-        %th
-          %a{:href => 'about/'}
-            %abbr{:title => "Likes Above Average"} LAA
-          Score
-      %tbody
-        - @player.draftees.each do |draftee|
-          %tr
-            %td.user
-              %dl
-                %dt
-                  = link_to draftee.name, player_path(draftee)
-                %dd.twitter
-                  = twitter_link(draftee)
-                %dd.avatar
-                  %a{:href => draftee.url}
-                    %img{:alt => "#{possessive(draftee.name)} avatar", :src => draftee.avatar_url}/
-            %td= draftee.shots_count
-            %td= draftee.likes_received_count
-            %td= sprintf("%.1f", draftee.personal_laa)
-
-        %tr.totals
-          %td Totals
-          %td= @player.draftee_shots_count
-          %td= @player.draftee_likes_received_count
-          %td= sprintf("%.1f", @player.draftee_total_laa)
+  #player-draftees
+    %h3
+      = succeed "'s" do
+        = @player.name
+      = pluralize(@player.draftees_count, "Draftee")
+    - if @player.draftees_count > 0
+      %table#draftee-stats
+        %thead
+          %th.player Player
+          %th Shots
+          %th Likes
+          %th
+            %a{:href => 'about/'}
+              %abbr{:title => "Likes Above Average"} LAA
+            Score
+        %tbody
+          - @player.draftees.each do |draftee|
+            %tr
+              %td.user
+                %dl
+                  %dt
+                    = link_to draftee.name, player_path(draftee)
+                  %dd.twitter
+                    = twitter_link(draftee)
+                  %dd.avatar
+                    %a{:href => draftee.url}
+                      %img{:alt => "#{possessive(draftee.name)} avatar", :src => draftee.avatar_url}/
+              %td= draftee.shots_count
+              %td= draftee.likes_received_count
+              %td= sprintf("%.1f", draftee.personal_laa)
+          %tr.totals
+            %td Totals
+            %td= @player.draftee_shots_count
+            %td= @player.draftee_likes_received_count
+            %td= sprintf("%.1f", @player.draftee_total_laa)
