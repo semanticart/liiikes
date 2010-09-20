@@ -1,0 +1,33 @@
+!!! 5
+%html{:lang => 'en'}
+  %head
+    %meta{:charset => 'UTF-8'}
+    %title Liiikes
+    %link{:rel => 'shortcut icon', :href => '/favicon.ico'}
+    = stylesheet_link_tag 'main', :media => 'screen'
+    /[if IE]
+      = stylesheet_link_tag 'http://html5shim.googlecode.com/svn/trunk/html5.js'
+    = javascript_include_tag 'jquery', 'application'
+  %body{:id => params[:controller], :class => params[:action]}
+    #wrapper
+      %header
+        %h1
+          %a{:href => '/'} Liiikes
+        %p.tagline
+          Using statistics to find the best content on 
+          = succeed "." do
+            %a{:rel => 'external', :href => 'http://dribbble.com">Dribbble'} Dribbble
+          = link_to "(About)", :controller => "about"
+      %nav
+        %ul
+          %li#nav-players
+            %a{:href => '/'}
+              Top Players
+              %small Who's posting the best content to Dribbble?
+          %li#nav-scouts
+            %a{:href => '/scouuuts'}
+              Top Scouts
+              %small Who's drafting the best talent to Dribbble?
+      =yield
+    %footer            
+      %p Liiikes was built by <a href="http://darowski.com">Adam Darowski</a> and <a href="http://semanticart.com">Jeffrey Chupp</a>.
