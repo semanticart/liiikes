@@ -16,8 +16,7 @@
 
   %table#player-stats
     %caption
-      = succeed "'s" do
-        = @player.name
+      = possessive(@player.name)
       Stats
     %thead
       %th Shots
@@ -35,8 +34,7 @@
   - if @player.draftees_count > 0
     #player-draftees
       %h3
-        = succeed "'s" do
-          = @player.name
+        = possessive(@player.name)
         = pluralize(@player.draftees_count, "Draftee")
       %table#draftee-stats
         %thead
