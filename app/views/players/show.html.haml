@@ -32,12 +32,12 @@
         %td= @player.likes_received_count
         %td= sprintf("%.1f", @player.personal_laa)
 
-  #player-draftees
-    %h3
-      = succeed "'s" do
-        = @player.name
-      = pluralize(@player.draftees_count, "Draftee")
-    - if @player.draftees_count > 0
+  - if @player.draftees_count > 0
+    #player-draftees
+      %h3
+        = succeed "'s" do
+          = @player.name
+        = pluralize(@player.draftees_count, "Draftee")
       %table#draftee-stats
         %thead
           %th.player Player
