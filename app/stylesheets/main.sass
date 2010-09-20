@@ -113,17 +113,18 @@ nav
           text-decoration: none
           small
             color: #666
-      &.selected
-        a
-          +box_gradient(#EEE, #FFF)
-          color: #EA4C88
-          font-weight: bold
-          margin-bottom: -1px
-          padding-bottom: 11px
-          small
-            color: #666
 
-section#players, section#player
+#players.index #nav-players
+  a
+    +box_gradient(#EEE, #FFF)
+    color: #EA4C88
+    font-weight: bold
+    margin-bottom: -1px
+    padding-bottom: 11px
+    small
+      color: #666
+
+section#player-list, section#player
   overflow: hidden
   margin-top: 40px
 
@@ -228,7 +229,7 @@ footer
   color: #FFF
   top: -32px
   left: 92%
-  width: 220px
+  width: 250px
   dl
     margin: 0
     padding: 0
