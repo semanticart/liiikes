@@ -35,7 +35,7 @@
                 %dt
                   =possessive(player.name)
                   %span
-                    Top
+                    = "Top " if player.draftees_count > 10
                     = pluralize(top_draftees.size, "Draftee")
                 %dd
                   %ol
