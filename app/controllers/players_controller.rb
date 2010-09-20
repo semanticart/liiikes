@@ -24,7 +24,7 @@ class PlayersController < ApplicationController
 
   def options_from_params
     case params[:view]
-    when 'scouuuts'
+    when 'scouts'
       {:order => "laa_#{@shot_sample} desc, id asc", :include => :draftees, :conditions => "players.laa_#{@shot_sample} IS NOT NULL"}
     else
       {:order => "personal_laa desc, id asc", :conditions => ["shots_count >= ?", @shot_sample]}
@@ -33,15 +33,15 @@ class PlayersController < ApplicationController
 
   def template_from_params
     case params[:view]
-    when 'scouuuts'
-      'scouuuts'
+    when 'scouts'
+      'scouts'
     else
       'liiikes'
     end
   end
 
   def enforce_defaults
-    params[:view] = 'players' unless params[:view] == 'scouuuts'
+    params[:view] = 'players' unless params[:view] == 'scouts'
     params[:shot_sample] = '10' unless SAMPLE_SIZES.include?(params[:shot_sample].to_i)
   end
 

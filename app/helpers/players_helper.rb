@@ -8,11 +8,11 @@ module PlayersHelper
   end
 
   def viewing_players_tab?
-    ! viewing_scouuuts_tab?
+    ! viewing_scouts_tab?
   end
 
-  def viewing_scouuuts_tab?
-    params[:view] == 'scouuuts'
+  def viewing_scouts_tab?
+    params[:view] == 'scouts'
   end
 
   def twitter_link(player)

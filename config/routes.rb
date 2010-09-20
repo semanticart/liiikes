@@ -1,4 +1,4 @@
-Scouuuts::Application.routes.draw do
+Scouts::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -53,7 +53,7 @@ Scouuuts::Application.routes.draw do
   match ':view/page/:page', :to => "players#index"
 
   resources :about, :players
-  match 'scouuuts', :to => "players#index", :view => 'scouuuts'
+  match 'scouts', :to => "players#index", :view => 'scouts'
   root :to => "players#index", :view => 'players', :page => nil
 
   # See how all your routes lay out with "rake routes"
