@@ -52,7 +52,9 @@ Scouts::Application.routes.draw do
   match ':view/sample/:shot_sample/page/:page', :to => "players#index"
   match ':view/page/:page', :to => "players#index"
 
-  resources :about, :players
+  resources :about
+  resources :players, :constraints => { :id => %r([^/;,?]+) }
+
   match 'scouts', :to => "players#index", :view => 'scouts'
   root :to => "players#index", :view => 'players', :page => nil
 
