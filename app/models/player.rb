@@ -3,6 +3,14 @@ class Player < ActiveRecord::Base
 
   has_many :draftees, :class_name => 'Player', :foreign_key => :drafted_by_player_id, :order => "personal_laa desc"
 
+  SAMPLE_SIZES.each do |size|
+    has_many :"draftees_#{size}",
+      :class_name => 'Player',
+      :foreign_key => :drafted_by_player_id,
+      :order => "personal_laa desc",
+      :conditions => "players.shots_count >= #{size}"
+  end
+
   def self.find_by_login(login)
     find_by_url("http://dribbble.com/players/#{login}")
   end
@@ -71,16 +79,24 @@ class Player < ActiveRecord::Base
     likes / shots.to_f
   end
 
+  def draftees_for_sample(shot_sample = 0)
+    if shot_sample.to_i > 0
+      send(:"draftees_#{shot_sample}")
+    else
+      draftees
+    end
+  end
+
   # TODO: make these 3 methods performant
-    def draftee_likes_received_count
-      draftees.inject(0){|sum, draftee| sum + draftee.likes_received_count}
+    def draftee_likes_received_count(shot_sample = 0)
+      draftees_for_sample(shot_sample).inject(0){|sum, draftee| sum + draftee.likes_received_count}
     end
 
-    def draftee_shots_count
-      draftees.inject(0){|sum, draftee| sum + draftee.shots_count}
+    def draftee_shots_count(shot_sample = 0)
+      draftees_for_sample(shot_sample).inject(0){|sum, draftee| sum + draftee.shots_count}
     end
 
-    def draftee_total_laa
-      draftees.inject(0){|sum, draftee| sum + draftee.personal_laa}
+    def draftee_total_laa(shot_sample = 0)
+      draftees_for_sample(shot_sample).inject(0){|sum, draftee| sum + draftee.personal_laa}
     end
 end

@@ -25,7 +25,7 @@ class PlayersController < ApplicationController
   def options_from_params
     case params[:view]
     when 'scouts'
-      {:order => "laa_#{@shot_sample} desc, id asc", :include => :draftees, :conditions => "players.laa_#{@shot_sample} IS NOT NULL"}
+      {:order => "laa_#{@shot_sample} desc, id asc", :include => :"draftees_#{@shot_sample}", :conditions => "players.laa_#{@shot_sample} IS NOT NULL"}
     else
       {:order => "personal_laa desc, id asc", :conditions => ["shots_count >= ?", @shot_sample]}
     end

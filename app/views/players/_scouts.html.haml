@@ -26,16 +26,16 @@
               %img{:alt => "#{player.name} avatar", :src => player.avatar_url}/
       %td
         %div.draftees
-          %a{:href => "http://dribbble.com/players/#{player.id}/draftees"}= player.draftees_count
-          - if player.draftees.present?
+          %a{:href => "http://dribbble.com/players/#{player.id}/draftees"}= player.send(:"draftees_#{@shot_sample}").size
+          - if player.send(:"draftees_#{@shot_sample}").present?
             .top-draftees
               .arrow
-              - top_draftees = player.draftees[0..9]
+              - top_draftees = player.send(:"draftees_#{@shot_sample}")[0..9]
               %dl
                 %dt
                   =possessive(player.name)
                   %span
-                    = "Top " if player.draftees_count > 10
+                    = "Top " if player.send(:"draftees_#{@shot_sample}").size > 10
                     = pluralize(top_draftees.size, "Draftee")
                 %dd
                   %ol
@@ -45,6 +45,6 @@
                           %img.draftee-avatar{:alt => "#{possessive(draftee.name)} avatar", :src => draftee.avatar_url}/
                           = draftee.name
                         ="(#{sprintf("%.1f",draftee.personal_laa)})"
-      %td= player.draftee_shots_count
-      %td= player.draftee_likes_received_count
+      %td= player.draftee_shots_count(@shot_sample)
+      %td= player.draftee_likes_received_count(@shot_sample)
       %td= sprintf("%.1f",player.send("laa_#{@shot_sample}"))
