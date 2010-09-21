@@ -201,14 +201,17 @@ th
     background-color: #EEE
 
 .totals
-  font-size: 12px
   font-weight: bold
   td
-    background-color: #888
-    border-color: #666
-    color: #FFF
+    padding: 4px 10px
+    background-color: #CCC
+    border-width: 0
+    color: #333
   td:first-child
     text-align: left
+    +border_radius(4px 0 0 4px)
+  td:last-child
+    +border_radius(0 4px 4px 0)
 
 footer
   margin: 20px auto 100px
@@ -374,6 +377,8 @@ div.arrow
     padding-left: 1px
   #player-draftees
     margin-top: 40px
+  table
+    border-bottom-width: 0
   th.player
     width: 50%
 
