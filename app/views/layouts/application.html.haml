@@ -7,8 +7,8 @@
     %meta{:name => "keywords", :content => meta[:keywords]}
     %link{:rel => 'shortcut icon', :href => '/favicon.ico'}
     = stylesheet_link_tag 'main', :media => 'screen'
-    /[if IE]
-      = stylesheet_link_tag 'http://html5shim.googlecode.com/svn/trunk/html5.js'
+    /[if lt IE 9]
+      = javascript_include_tag 'http://html5shiv.googlecode.com/svn/trunk/html5.js'
     = javascript_include_tag 'jquery', 'application'
   %body{:id => (params[:view] || params[:controller]), :class => params[:action]}
     #wrapper
