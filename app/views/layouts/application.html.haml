@@ -2,7 +2,9 @@
 %html{:lang => 'en'}
   %head
     %meta{:charset => 'UTF-8'}
-    %title Liiikes
+    %title= meta[:title]
+    %meta{:name => "description", :content => meta[:description]}
+    %meta{:name => "keywords", :content => meta[:keywords]}
     %link{:rel => 'shortcut icon', :href => '/favicon.ico'}
     = stylesheet_link_tag 'main', :media => 'screen'
     /[if IE]

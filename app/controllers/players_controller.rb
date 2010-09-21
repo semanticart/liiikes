@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
   PER_PAGE = 20
-  before_filter :enforce_defaults
-  before_filter :set_shot_sample
+  before_filter :enforce_defaults, :only => :index
+  before_filter :set_shot_sample, :only => :index
   caches_page :index, :show
 
   def index
