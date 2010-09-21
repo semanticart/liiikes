@@ -9,13 +9,14 @@
       - if @player.website_url.present?
         %dt On the Web
         %dd= link_to display_website(@player), @player.website_url
-      %dt On Twitter
-      %dd= twitter_link(@player)
+      - if @player.twitter_screen_name.present?
+        %dt On Twitter
+        %dd= twitter_link(@player)
       %dt On Dribbble
       %dd= link_to(@player.dribbble_login, @player.url)
-      %dt Drafted by
-      %dd
-        %a{:href => '#'} Dan Cederholm
+      - if @player.drafted_by
+        %dt Drafted by
+        %dd= link_to @player.drafted_by.name, player_path(@player.drafted_by)
 
   %table#player-stats
     %caption
