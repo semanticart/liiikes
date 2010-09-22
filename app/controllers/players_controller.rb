@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       format.js { render :partial => @template_from_params }
-      format.html { }
+      format.html
     end
   end
 
