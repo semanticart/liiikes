@@ -7,4 +7,10 @@ $(document).ready(function(){
   $("#minimum-shots input[type=radio]").click(function(){
     window.location = '/' + $('#view').val() + "/sample/" + $(this).val() + "/page/1";
   });
+
+  $("#lii-explained").css("display","none");
+  $("#geek").click(function(){
+    $('#lii-explained').toggle();
+  });
+
 });
