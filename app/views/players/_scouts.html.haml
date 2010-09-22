@@ -37,6 +37,9 @@
                   %span
                     = "Top " if player.send(:"draftees_#{@shot_sample}").size > 10
                     = pluralize(top_draftees.size, "Draftee")
+                  %small
+                    Minimum
+                    = pluralize(@shot_sample, "shot")
                 %dd
                   %ol
                     - top_draftees.each do |draftee|
