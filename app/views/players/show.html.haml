@@ -35,6 +35,49 @@
         %td= @player.likes_received_count
         %td= sprintf("%.1f", @player.personal_laa)
 
+  #player-rankings
+    %h3
+      = possessive(@player.name)
+      Rankings
+    %table
+      %thead
+        %th.shot-count Shot Minimum
+        %th Player Rank
+        %th Scout Rank
+      %tbody
+        %tr
+          %td.shot-count 1 Shot
+          %td
+            25
+            %small (of 5000)
+          %td
+            13
+            %small (of 2000)
+        %tr
+          %td.shot-count 10 Shots
+          %td
+            25
+            %small (of 5000)
+          %td
+            13
+            %small (of 2000)
+        %tr
+          %td.shot-count 50 Shots
+          %td
+            25
+            %small (of 5000)
+          %td
+            13
+            %small (of 2000)
+        %tr
+          %td.shot-count 100 Shots
+          %td
+            25
+            %small (of 5000)
+          %td
+            13
+            %small (of 2000)
+
   - if @player.draftees_count > 0
     #player-draftees
       %h3

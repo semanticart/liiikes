@@ -206,6 +206,11 @@ th
     font-size: 13px
     background-color: #EEE
 
+th, td
+  &.shot-count
+    text-align: left
+    width: 50%
+
 .totals
   font-weight: bold
   td
@@ -390,9 +395,13 @@ div.arrow
     clear: left
     margin: 20px 0 0
     padding-left: 1px
-  #player-draftees
-    margin-top: 40px
-  table
+  #player-rankings
+    margin-top: 60px
+    small
+      color: #666
+      font-style: italic
+      font-size: 12px
+  table#draftee-stats
     border-bottom-width: 0
   th.player
     width: 50%
@@ -426,3 +435,4 @@ div.arrow
   background-color: #EEE
   padding: 0 15px
   margin-top: 15px
+
