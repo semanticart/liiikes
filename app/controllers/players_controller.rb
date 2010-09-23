@@ -11,7 +11,7 @@ class PlayersController < ApplicationController
     @template = template_from_params
 
     respond_to do |format|
-      format.js { render :partial => @template_from_params }
+      # format.js { render :partial => @template }
       format.html
     end
   end
