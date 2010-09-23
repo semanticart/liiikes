@@ -44,7 +44,7 @@
                   %ol
                     - top_draftees.each do |draftee|
                       %li
-                        %a{:href => draftee.url}
+                        %a{:href => player_path(draftee)}
                           %img.draftee-avatar{:alt => "#{possessive(draftee.name)} avatar", :src => draftee.avatar_url}/
                           = draftee.name
                         ="(#{sprintf("%.1f",draftee.personal_laa)})"
