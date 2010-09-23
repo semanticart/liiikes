@@ -44,9 +44,7 @@
                   %ol
                     - top_draftees.each do |draftee|
                       %li
-                        %a{:href => player_path(draftee)}
-                          %img.draftee-avatar{:alt => "#{possessive(draftee.name)} avatar", :src => draftee.avatar_url}/
-                          = draftee.name
+                        =link_to image_tag(draftee.avatar_url, :alt => "#{possessive(draftee.name)} avatar") + draftee.name, player_path(draftee)
                         ="(#{sprintf("%.1f",draftee.personal_laa)})"
       %td= player.draftee_shots_count(@shot_sample)
       %td= player.draftee_likes_received_count(@shot_sample)
