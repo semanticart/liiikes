@@ -50,13 +50,13 @@
             %td.shot-count= pluralize(size, "Shot")
             %td
               - if r = @player.send("player_rank_#{size}")
-                = link_to r, players_path(:shot_sample => size, :page => (r / 20.0).ceil, :view => 'players')
+                = link_to r, "/players/sample/#{size}/page/#{(r / 20.0).ceil}"
               - else
                 N/A
               %small= "(of #{@players_per_sample[size][:p]})"
             %td
               - if r = @player.send("laa_rank_#{size}")
-                = link_to r, players_path(:shot_sample => size, :page => (r / 20.0).ceil, :view => 'scouts')
+                = link_to r, "/scouts/sample/#{size}/page/#{(r / 20.0).ceil}"
               - else
                 N/A
               %small= "(of #{@players_per_sample[size][:l]})"
