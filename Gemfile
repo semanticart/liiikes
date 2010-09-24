@@ -7,6 +7,10 @@ gem 'rails', '3.0.0'
 
 gem 'pg'
 
+group :production do
+  gem "memcache-client"
+  gem 'memcached-northscale', :require => 'memcached'
+end
 
 gem "will_paginate", "~> 3.0.pre2"
 gem 'hassle', :git => 'git://github.com/koppen/hassle.git'

@@ -54,6 +54,8 @@ GEM
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
+    memcache-client (1.8.5)
+    memcached-northscale (0.19.5.4)
     mime-types (1.16)
     pg (0.9.0)
     polyglot (0.3.1)
@@ -98,6 +100,8 @@ DEPENDENCIES
   haml
   hassle!
   httparty
+  memcache-client
+  memcached-northscale
   pg
   rails (= 3.0.0)
   redgreen
