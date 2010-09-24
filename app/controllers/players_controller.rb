@@ -18,7 +18,8 @@ class PlayersController < ApplicationController
   end
 
   def show
-    @player = Player.find(params[:id])
+    @player = Player.find_by_login(params[:id])
+    raise ActiveRecord::RecordNotFound unless @player
   end
 
   protected
