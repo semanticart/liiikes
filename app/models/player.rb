@@ -41,7 +41,7 @@ class Player < ActiveRecord::Base
   end
 
   def compatible_attributes
-    attributes.keys - (['updated_at', 'laa', 'personal_laa'] + SAMPLE_SIZES.map{|size| "laa_#{size}"})
+    attributes.keys - (['updated_at', 'laa', 'personal_laa'] + SAMPLE_SIZES.map{|size| ["laa_#{size}", "player_rank_#{size}", "laa_rank_#{size}"]}.flatten)
   end
 
   def calculate_personal_laa(average_likes_per_shot)
