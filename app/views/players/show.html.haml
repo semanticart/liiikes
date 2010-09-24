@@ -45,38 +45,21 @@
         %th Player Rank
         %th Scout Rank
       %tbody
-        %tr
-          %td.shot-count 1 Shot
-          %td
-            25
-            %small (of 5000)
-          %td
-            13
-            %small (of 2000)
-        %tr
-          %td.shot-count 10 Shots
-          %td
-            25
-            %small (of 5000)
-          %td
-            13
-            %small (of 2000)
-        %tr
-          %td.shot-count 50 Shots
-          %td
-            25
-            %small (of 5000)
-          %td
-            13
-            %small (of 2000)
-        %tr
-          %td.shot-count 100 Shots
-          %td
-            25
-            %small (of 5000)
-          %td
-            13
-            %small (of 2000)
+        - SAMPLE_SIZES.each do |size|
+          %tr
+            %td.shot-count= pluralize(size, "Shot")
+            %td
+              - if r = @player.send("player_rank_#{size}")
+                = link_to r, players_path(:shot_sample => size, :page => (r / 20.0).ceil, :view => 'players')
+              - else
+                N/A
+              %small= "(of #{@players_per_sample[size][:p]})"
+            %td
+              - if r = @player.send("laa_rank_#{size}")
+                = link_to r, players_path(:shot_sample => size, :page => (r / 20.0).ceil, :view => 'scouts')
+              - else
+                N/A
+              %small= "(of #{@players_per_sample[size][:l]})"
 
   - if @player.draftees_count > 0
     #player-draftees

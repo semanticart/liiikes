@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100918162157) do
+ActiveRecord::Schema.define(:version => 20100923201031) do
 
   create_table "players", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(:version => 20100918162157) do
     t.decimal  "laa_50"
     t.decimal  "laa_100"
     t.string   "website_url"
+    t.integer  "player_rank_1"
+    t.integer  "laa_rank_1"
+    t.integer  "player_rank_10"
+    t.integer  "laa_rank_10"
+    t.integer  "player_rank_50"
+    t.integer  "laa_rank_50"
+    t.integer  "player_rank_100"
+    t.integer  "laa_rank_100"
   end
 
 end

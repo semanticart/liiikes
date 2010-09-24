@@ -2,6 +2,7 @@ class PlayersController < ApplicationController
   PER_PAGE = 20
   before_filter :enforce_defaults, :only => :index
   before_filter :set_shot_sample, :only => :index
+  before_filter :get_players_per_sample, :only => :show
   caches_page :index, :show
 
   def index
@@ -47,5 +48,16 @@ class PlayersController < ApplicationController
 
   def set_shot_sample
     @shot_sample = params[:shot_sample].to_i
+  end
+
+  def get_players_per_sample
+    @players_per_sample = Rails.cache.fetch('pps', :expires_in => 5.minutes) do
+      SAMPLE_SIZES.inject({}) do |h, size|
+        h[size] ||= {}
+        h[size][:p] = Player.count(:conditions => "player_rank_#{size} IS NOT NULL")
+        h[size][:l] = Player.count(:conditions => "laa_rank_#{size} IS NOT NULL")
+        h
+      end
+    end
   end
 end
