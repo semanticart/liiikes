@@ -26,7 +26,7 @@
               %img{:alt => "#{player.name} avatar", :src => player.avatar_url}/
       %td
         %div.draftees
-          %a{:href => "http://dribbble.com/players/#{player.id}/draftees"}= player.send(:"draftees_#{@shot_sample}").size
+          %a{:href => "#{player.url}/draftees"}= player.send(:"draftees_#{@shot_sample}").size
           - if player.send(:"draftees_#{@shot_sample}").present?
             .top-draftees
               .arrow
