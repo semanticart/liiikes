@@ -12,7 +12,7 @@ class Player < ActiveRecord::Base
   end
 
   def self.find_by_login(login)
-    find_by_url("http://dribbble.com/players/#{login}")
+    find_by_url("http://dribbble.com/#{login}")
   end
 
   def self.from_api(swish_player)

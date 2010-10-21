@@ -1,4 +1,6 @@
 module ApplicationHelper
+  # terrible case statement to determine what meta data to show
+  # TODO: improve this
   def meta
     page_id = [params[:controller], params[:action], params[:view] || ''].map(&:downcase)
     @meta ||= case page_id
@@ -12,7 +14,7 @@ module ApplicationHelper
                 {:title => "Liiikes: About"}
               else
                 {}
-              end.reverse_merge({
+              end.reverse_merge({ # fall over to these defaults
                 :title => "Liiikes: Using statistics to find the best content on Dribbble.",
                 :description => "Liiikes.com:  Using statistics to find the best content on Dribbble.",
                 :keywords => "liiikes, dribbble, scouts"

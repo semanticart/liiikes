@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  # We don't need protect_from_forgery since we have no forms :)
 end
