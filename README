@@ -1,1 +1,13 @@
+LIIIKES -- http://liiikes.com
 
+Liiikes, a simple app that utilizes the Dribbble API, was built by Adam Darowski and Jeffrey Chupp.
+For updates, you can follow @liiikesapp on Twitter.
+
+You can read more about the app and the tech stack here:  http://liiikes.com/about
+
+Note:  This was a fun little hobby app thrown together in some free time.  As
+a result it certainly doesn't represent Jeffrey's best effort (gasp, no tests!).
+There's plenty of room for improvement :)
+
+Jeffrey Chupp -- http://github.com/semanticart -- http://semanticart.com/
+Adam Darowski -- http://github.com/adarowski -- http://darowski.com/

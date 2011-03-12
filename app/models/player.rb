@@ -87,7 +87,7 @@ class Player < ActiveRecord::Base
     end
   end
 
-  # TODO: make these 3 methods performant
+  # TODO: make these 3 methods performant.  but it doesn't really matter since they're fast enough given caching.
     def draftee_likes_received_count(shot_sample = 0)
       draftees_for_sample(shot_sample).inject(0){|sum, draftee| sum + draftee.likes_received_count}
     end
