@@ -1,20 +1,21 @@
-=border_radius(!radius)
-  -moz-border-radius = "#{!radius}"
-  -webkit-border-radius = "#{!radius}"
-  border-radius = "#{!radius}"
+@mixin border_radius($radius)
+  -moz-border-radius: #{$radius}
+  -webkit-border-radius: #{$radius}
+  border-radius: #{$radius}
 
-=box_shadow(!color, !values)
-  -webkit-box-shadow = "#{!color} #{!values}"
-  -moz-box-shadow = "#{!color} #{!values}"
-  box-shadow = "#{!color} #{!values}"
+=box_shadow($h_offset: 0, $v_offset: 0, $blur_radius: 5, $color: unquote("#AAA"))
+  -moz-box-shadow: unquote("#{$h_offset}px #{$v_offset}px #{$blur_radius}px #{$color}")
+  -webkit-box-shadow: unquote("#{$h_offset}px #{$v_offset}px #{$blur_radius}px #{$color}")
+  box-shadow: unquote("#{$h_offset}px #{$v_offset}px #{$blur_radius}px #{$color}")
 
-=box_gradient(!top,!bottom)
-  background-image = "-moz-linear-gradient(top, #{!top}, #{!bottom})"
-  background-image = "-webkit-gradient(linear,left top,left bottom,color-stop(0, #{!top}),color-stop(1, #{!bottom}))"
-  -ms-filter = "\"progid:DXImageTransform.Microsoft.gradient(startColorStr='#{!top}', EndColorStr='#{!bottom}')\""
-  *filter = "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{!top}', EndColorStr='#{!bottom}')"
+@mixin box_gradient($start,$end)
+  background-image: -moz-linear-gradient(top, #{!start}, #{!end})
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #{!start}),color-stop(1, #{!end}))
+  background-image: -webkit-linear-gradient(#{!start}, #{!end})
+  background-image: linear-gradient(top, #{!start}, #{!end})
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{!start}', EndColorStr='#{!end}')
 
-=reset
+@mixin reset
   margin: 0
   padding: 0
 
@@ -46,7 +47,7 @@ abbr
   border: none
 
 #wrapper
-  +box_shadow(#AAA, 0px 0px 5px)
+  @include box_shadow
   border-top: 6px solid #EA4C88
   width: 80%
   padding: 20px
@@ -86,15 +87,15 @@ nav
   border-bottom: 1px solid #DDD
   ul
     list-style: none
-    +reset
+    @include reset
     text-align: center
     li
       display: inline-block
       width: 45%
-      +reset
+      @include reset
       a
-        +border_radius(10px 10px 0 0)
-        +box_gradient(#EEE, #EEE)
+        @include border_radius(10px 10px 0 0)
+        @include box_gradient(#EEE, #EEE)
         width: 100%
         text-align: center
         display: inline-block
@@ -119,7 +120,7 @@ nav
 #players.index #nav-players,
 #scouts.index #nav-scouts
   a
-    +box_gradient(#EEE, #FFF)
+    @include box_gradient(#EEE, #FFF)
     color: #EA4C88
     font-weight: bold
     margin-bottom: -1px
@@ -185,7 +186,7 @@ dd
       font-weight: normal
 
 .avatar img
-  +border_radius(4px)
+  @include border_radius(4px)
   border: 1px solid #DDD
   padding: 4px
   background-color: #FFF
@@ -220,9 +221,9 @@ th, td
     color: #333
   td:first-child
     text-align: left
-    +border_radius(4px 0 0 4px)
+    @include border_radius(4px 0 0 4px)
   td:last-child
-    +border_radius(0 4px 4px 0)
+    @include border_radius(0 4px 4px 0)
 
 footer
   margin: 20px auto 100px
@@ -234,7 +235,7 @@ footer
   position: relative
 
 .top-draftees
-  +border_radius(8px)
+  @include border_radius(8px)
   position: absolute
   background-color: #333
   background-color: rgba(0, 0, 0, 0.85)
@@ -324,23 +325,23 @@ div.arrow
     text-align: center
     border: 1px solid #EA4C88
     padding: 3px 10px
-    +box_gradient(#FF7EBA,#EA4C88)
+    @include box_gradient(#FF7EBA,#EA4C88)
     color: #DDD
     &:hover, &.selected
       cursor: pointer
       font-weight: bold
-      +box_gradient(#EA4C88,#FF7EBA)
+      @include box_gradient(#EA4C88,#FF7EBA)
       color: #FFF
       text-decoration: none
     &[for=shot-sample-1]
-      +border_radius(6px 0 0 6px)
+      @include border_radius(6px 0 0 6px)
       border-right-width: 0
     &[for=shot-sample-10]
       border-right-width: 0
     &[for=shot-sample-50]
       border-right-width: 0
     &[for=shot-sample-100]
-      +border_radius(0 6px 6px 0)
+      @include border_radius(0 6px 6px 0)
     input[type=radio]
       position: absolute
       left: -9999px
@@ -430,7 +431,7 @@ div.arrow
     font-size: 12px
 
 #lii-explained
-  +border_radius(8px)
+  @include border_radius(8px)
   border: 1px solid #DDD
   background-color: #EEE
   padding: 0 15px
