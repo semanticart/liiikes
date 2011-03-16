@@ -25,7 +25,7 @@ module PlayersHelper
       # clean up any bad characters in a player's twitter name
       twitter_user = player.twitter_screen_name.sub(/^.*[@\/]/, '')
 
-      link_to(twitter_user, "http://twitter.com/#{twitter_user}")
+      link_to("@" + twitter_user, "http://twitter.com/#{twitter_user}")
     end
   end
 
