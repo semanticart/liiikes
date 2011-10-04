@@ -1,23 +1,38 @@
+// MIXINS
+
 @mixin border_radius($radius)
-  -moz-border-radius: #{$radius}
-  -webkit-border-radius: #{$radius}
-  border-radius: #{$radius}
+  -moz-border-radius: $radius
+  -webkit-border-radius: $radius
+  border-radius: $radius
 
-=box_shadow($h_offset: 0, $v_offset: 0, $blur_radius: 5, $color: unquote("#AAA"))
-  -moz-box-shadow: unquote("#{$h_offset}px #{$v_offset}px #{$blur_radius}px #{$color}")
-  -webkit-box-shadow: unquote("#{$h_offset}px #{$v_offset}px #{$blur_radius}px #{$color}")
-  box-shadow: unquote("#{$h_offset}px #{$v_offset}px #{$blur_radius}px #{$color}")
+@mixin box_shadow($color: #AAA, $values: 0 0 5px)
+  -webkit-box-shadow: $color $values
+  -moz-box-shadow: $color $values
+  box-shadow: $color $values
 
-@mixin box_gradient($start,$end)
-  background-image: -moz-linear-gradient(top, #{!start}, #{!end})
-  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #{!start}),color-stop(1, #{!end}))
-  background-image: -webkit-linear-gradient(#{!start}, #{!end})
-  background-image: linear-gradient(top, #{!start}, #{!end})
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{!start}', EndColorStr='#{!end}')
+@mixin box_gradient($start, $end)
+  background-color: $start
+  background-image: -webkit-gradient(linear, left top, left bottom, from($start), to($end))
+  background-image: -webkit-linear-gradient(top, $start, $end)
+  background-image: -moz-linear-gradient(top, $start, $end)
+  background-image: -ms-linear-gradient(top, $start, $end)
+  background-image: -o-linear-gradient(top, $start, $end)
+  background-image: linear-gradient(top, $start, $end)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$start}', EndColorStr='#{$end}')
 
 @mixin reset
   margin: 0
   padding: 0
+
+// FONT-FACE
+
+@font-face
+  font-family: 'ChunkFiveRegular'
+  src: url('/fonts/Chunkfive-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/Chunkfive-webfont.woff') format('woff'), url('/fonts/Chunkfive-webfont.ttf')  format('truetype'), url('/fonts/Chunkfive-webfont.svg#svgFontName') format('svg')
+  font-weight: normal
+  font-style: normal
+
+// STYLES
 
 html
   -webkit-text-size-adjust: none
@@ -406,13 +421,6 @@ div.arrow
     border-bottom-width: 0
   th.player
     width: 50%
-
-@font-face
-  font-family: 'ChunkFiveRegular'
-  src: url('/fonts/Chunkfive-webfont.eot')
-  src: local('☺'), url('/fonts/Chunkfive-webfont.woff') format('woff'), url('/fonts/Chunkfive-webfont.ttf') format('truetype'), url('/fonts/Chunkfive-webfont.svg#webfontb5K2fJwj') format('svg')
-  font-weight: normal
-  font-style: normal
 
 #error
   text-align: center
