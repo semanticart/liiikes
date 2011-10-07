@@ -82,8 +82,8 @@
                 %dl
                   %dt
                     = link_to draftee.name, player_path(draftee)
-                  %dd.twitter
-                    = twitter_link(draftee)
+                  %dd.profile
+                    = link_to(draftee.dribbble_login, draftee.url)
                   %dd.avatar
                     %a{:href => draftee.url}
                       %img{:alt => "#{possessive(draftee.name)} avatar", :src => draftee.avatar_url}/
