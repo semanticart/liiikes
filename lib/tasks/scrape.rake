@@ -47,6 +47,7 @@ task :calculate_laas => :environment do
   # calculate the laas
   average_likes_per_shot = Player.average_likes_per_shot
   Player.transaction do
+    # TODO: this loads a lot into memory. Not a huge deal yet.
     Player.all(:include => :draftees).each do |player|
       player.calculate_laa(average_likes_per_shot)
       player.calculate_personal_laa(average_likes_per_shot)
@@ -101,7 +102,7 @@ task :scrape_players => :environment do
   puts "done in #{api_requests} api requests"
 end
 
-task :refresh => [:scrape_players, :calculate_laas, :update_ranks]do
+task :refresh => [:scrape_players, :calculate_laas, :update_ranks] do
   puts "done refreshing"
 end
 
@@ -112,8 +113,3 @@ task :clear_prod_cache do
   FileUtils.rm "#{Rails.root}/public/about.html" rescue puts "failed to delete about.html"
   FileUtils.rm "#{Rails.root}/public/index.html" rescue puts "failed to delete index.html"
 end
-
-# desc "This task is called by the Heroku cron add-on"
-# task :cron => [:scrape_players] do
-#   puts "done cronning"
-# end
