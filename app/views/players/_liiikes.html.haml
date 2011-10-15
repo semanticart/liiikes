@@ -20,7 +20,7 @@
             = link_to(player.dribbble_login, player.url)
           %dd.avatar
             %a{:href => player.url}
-              %img{:alt => "#{player.name} avatar", :src => player.avatar_url}/
+              = avatar_url(player)
       %td= player.shots_count
       %td= player.likes_received_count
       %td= sprintf("%.1f", player.personal_laa)

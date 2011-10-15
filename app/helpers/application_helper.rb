@@ -20,4 +20,9 @@ module ApplicationHelper
                 :keywords => "liiikes, dribbble, scouts"
               })
   end
+
+  def avatar_url(player)
+    url = (player.avatar_url == "/images/avatar-default.gif" ? "http://dribbble.com/images/avatar-default.gif" : player.avatar_url)
+    image_tag url, :alt => "#{possessive(player.name)} avatar"
+  end
 end

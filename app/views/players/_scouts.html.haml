@@ -23,7 +23,7 @@
             = link_to(player.dribbble_login, player.url)
           %dd.avatar
             %a{:href => player.url}
-              %img{:alt => "#{player.name} avatar", :src => player.avatar_url}/
+              = avatar_url(player)
       %td
         %div.draftees
           %a{:href => "#{player.url}/draftees"}= player.send(:"draftees_#{@shot_sample}").size

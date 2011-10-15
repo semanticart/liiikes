@@ -2,7 +2,7 @@
 
   #player-data
     .avatar
-      %img{:alt => "#{@player.name} avatar", :src => @player.avatar_url}/
+      = avatar_url(@player)
 
     %h2= @player.name
     %dl
@@ -86,7 +86,7 @@
                     = link_to(draftee.dribbble_login, draftee.url)
                   %dd.avatar
                     %a{:href => draftee.url}
-                      %img{:alt => "#{possessive(draftee.name)} avatar", :src => draftee.avatar_url}/
+                      = avatar_url(draftee)
               %td= draftee.shots_count
               %td= draftee.likes_received_count
               %td= sprintf("%.1f", draftee.personal_laa)
